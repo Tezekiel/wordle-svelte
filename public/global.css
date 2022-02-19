@@ -18,7 +18,21 @@ ul {
 }
 
 .container {
-	max-width: 768px;
-	margin: 100px auto;
+	max-width: 500px;
+	margin: 20px auto;
 	padding: 0 20px;
+}
+
+/** Icons **/
+.mi {
+	font-size: 1.6rem;
+}
+/* Use this to make sure screen readers read something sensible when encountering the mi. If you are using the icons decoratively, you can omit the <span> */
+.u-sr-only {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
 }
