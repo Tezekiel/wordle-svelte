@@ -11,13 +11,15 @@
         return {iconClass: 'mi-settings', iconDesc: 'Settings'}
       case IconType.Warning:
         return {iconClass: 'mi-warning', iconDesc: 'Warning'}
+      case IconType.Close:
+        return {iconClass: 'mi-close', iconDesc: 'Close'}
     }
   }
 
   let {iconClass, iconDesc} = iconFromType(type)
 </script>
 
-<div>
+<div on:click>
   <i class="mi {iconClass}">
     <span class="u-sr-only">{iconDesc}</span>
   </i>
@@ -26,6 +28,7 @@
 <style>
   div {
     cursor: pointer;
+    align-self: end;
   }
 </style>
 

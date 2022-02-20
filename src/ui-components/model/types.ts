@@ -1,5 +1,6 @@
 export enum IconType {
   Help,
   Settings,
-  Warning
+  Warning,
+  Close,
 }

@@ -1,38 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-	font-family: 'Poppins', sans-serif;
-	background-color: #202142;
-	line-height: 1.6;
-	color: #fff;
+  font-family: 'Poppins', sans-serif;
+  background-color: #202142;
+  line-height: 1.6;
+  color: #fff;
 }
 
 ul {
-	list-style: none;
+  list-style: none;
 }
 
-.container {
-	max-width: 500px;
-	margin: 20px auto;
-	padding: 0 20px;
+.app-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.game-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /** Icons **/
 .mi {
-	font-size: 1.6rem;
+  font-size: 1.6rem;
 }
-/* Use this to make sure screen readers read something sensible when encountering the mi. If you are using the icons decoratively, you can omit the <span> */
+
+/* Use this to make sure screen readers read something sensible when encountering the mi.
+ If you are using the icons decoratively, you can omit the <span> */
 .u-sr-only {
-	position: absolute;
-	left: -10000px;
-	top: auto;
-	width:1px;
-	height:1px;
-	overflow:hidden;
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }

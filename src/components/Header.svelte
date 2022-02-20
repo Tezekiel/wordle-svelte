@@ -1,14 +1,15 @@
 <script lang="ts">
   import IconButton from "../ui-components/IconButton.svelte";
   import { IconType } from "../ui-components/model/types";
+  import { toggleProperty } from "../store/utils";
 
 </script>
 
 <div class="wrapper">
   <div class="header">
-    <IconButton type={IconType.Help}/>
+    <IconButton type={IconType.Help} on:click={() => toggleProperty('helpVisible')}/>
     <h1>Wordle</h1>
-    <IconButton type={IconType.Settings}/>
+    <IconButton type={IconType.Settings} on:click={() => toggleProperty('settingsVisible')}/>
   </div>
 </div>
 
