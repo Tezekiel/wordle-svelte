@@ -15,6 +15,7 @@
 
 <style>
   .wrapper {
+    flex: 0.75 1;
     border-bottom: 1px solid grey;
   }
 
