@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="108971cb-36b0-4976-b1ca-9171c8b2dab2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Key.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Keyboard.svelte" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/keyboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/constants/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/constants/characters.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Key.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Key.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Keyboard.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Keyboard.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/keyboard.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,10 +23,10 @@
       <list>
         <option value="Header" />
         <option value="IconButton" />
-        <option value="JavaScript File" />
         <option value="TypeScript File" />
         <option value="Keyboard" />
         <option value="Key" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -76,7 +77,7 @@
       <updated>1645278786260</updated>
       <workItem from="1645278791016" duration="4810000" />
       <workItem from="1645283668100" duration="8145000" />
-      <workItem from="1645458088169" duration="4297000" />
+      <workItem from="1645458088169" duration="6041000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1645280268829</created>
@@ -99,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645386884461</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add Keyboard">
+      <created>1645465821288</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1645465821288</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,6 +117,7 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Add Header component&#10;Add IconButton ui components" />
     <MESSAGE value="Add FullScreenDialog" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add FullScreenDialog" />
+    <MESSAGE value="Add Keyboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Keyboard" />
   </component>
 </project>

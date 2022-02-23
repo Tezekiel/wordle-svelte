@@ -1,8 +1,9 @@
 <script lang="ts">
   export let keyValue = ""
+  export let isActions = false
 </script>
 
-<div class="container">
+<div class="{isActions ? 'special container' : 'container'}">
   {keyValue}
 </div>
 
@@ -23,5 +24,10 @@
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+  }
+
+  .special{
+    height: 100%;
+    width: 70px;
   }
 </style>
