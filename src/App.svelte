@@ -3,11 +3,6 @@
   import FullScreenDialog from "./components/FullScreenDialog.svelte";
   import Keyboard from "./components/Keyboard.svelte";
 
-  document.onkeydown = function (event) {
-    let char = event.key
-
-    console.log(char)
-  }
 </script>
 
 <svelte:head>

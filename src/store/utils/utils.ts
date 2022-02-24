@@ -1,4 +1,4 @@
-import { SettingsStore } from "../store/settings"
+import { SettingsStore } from "../settings"
 
 export const toggleProperty = (property: string) => {
   SettingsStore.update((currentState) => {

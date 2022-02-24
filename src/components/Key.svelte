@@ -1,9 +1,24 @@
 <script lang="ts">
   export let keyValue = ""
   export let isActions = false
+  let element
+
+  export const forceClick = () => {
+    element.click()
+    element.animate([
+      { transform: 'translateY(3px)' },
+      { backgroundColor: 'yellow' }
+    ], {duration: 150,})
+  }
+
+  const handleClick = () => {
+    console.log('clicked')
+  }
+
+
 </script>
 
-<div class="{isActions ? 'special container' : 'container'}">
+<div class="key {isActions ? 'special container' : 'container'}" bind:this={element} on:click={handleClick}>
   {keyValue}
 </div>
 
@@ -26,8 +41,14 @@
     user-select: none;
   }
 
-  .special{
+  .special {
     height: 100%;
     width: 70px;
   }
+
+  .key:active {
+    background-color: yellow;
+    transform: translateY(3px);
+  }
+
 </style>

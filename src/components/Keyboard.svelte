@@ -1,21 +1,31 @@
-<script lang="ts">
+<script>
   import Key from "../components/Key.svelte"
   import { characters } from "../constants/characters.js"
   import { actions } from "../constants/actions.js"
 
-  const keys: string[] = characters
-  const keyActions: string[] = actions
+  const keys = characters
+  const keyActions = actions
+
+  let allKeys = []
+
+  document.onkeydown = function (event) {
+    let key = event.key.toLowerCase()
+    if (key === 'backspace') key = 'back'
+
+    const component= allKeys[key]
+    component && component.forceClick()
+  }
 </script>
 
 <div class="wrapper">
   <div class="actions">
     {#each keyActions as key}
-      <Key keyValue="{key.toUpperCase()}" isActions="true"/>
+      <Key keyValue="{key.toUpperCase()}" isActions="true" bind:this={allKeys[key]}/>
     {/each}
   </div>
   <div class="container">
     {#each keys as key}
-      <Key keyValue="{key.toUpperCase()}"/>
+      <Key keyValue="{key.toUpperCase()}" bind:this={allKeys[key]}/>
     {/each}
   </div>
 </div>
