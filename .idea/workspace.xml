@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="108971cb-36b0-4976-b1ca-9171c8b2dab2" name="Changes" comment="Add keys, actions and keydown event">
+    <list default="true" id="108971cb-36b0-4976-b1ca-9171c8b2dab2" name="Changes" comment="Fix up gitignore, fix keyboard events">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/wordle-svelte.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/wordle-svelte.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FullScreenDialog.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FullScreenDialog.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Key.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Key.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Keyboard.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Keyboard.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/utils.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/utils/utils.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +70,9 @@
       <recent name="$PROJECT_DIR$/src/store" />
       <recent name="$PROJECT_DIR$/src/components" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/store/utils" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -103,7 +102,7 @@
       <workItem from="1645278791016" duration="4810000" />
       <workItem from="1645283668100" duration="8145000" />
       <workItem from="1645458088169" duration="15961000" />
-      <workItem from="1645719932758" duration="928000" />
+      <workItem from="1645719932758" duration="1183000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1645280268829</created>
@@ -140,11 +139,36 @@
       <option name="project" value="LOCAL" />
       <updated>1645640315097</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fix up gitignore">
+      <created>1645720924750</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1645720924750</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fix up gitignore, fix keyboard events">
+      <created>1645721001101</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1645721001101</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
@@ -152,6 +176,8 @@
     <MESSAGE value="Add FullScreenDialog" />
     <MESSAGE value="Add Keyboard" />
     <MESSAGE value="Add keys, actions and keydown event" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add keys, actions and keydown event" />
+    <MESSAGE value="Fix up gitignore" />
+    <MESSAGE value="Fix up gitignore, fix keyboard events" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix up gitignore, fix keyboard events" />
   </component>
 </project>
