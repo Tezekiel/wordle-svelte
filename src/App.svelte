@@ -2,7 +2,7 @@
   import Header from "./components/Header.svelte";
   import FullScreenDialog from "./components/FullScreenDialog.svelte";
   import Keyboard from "./components/Keyboard.svelte";
-
+  import InputArea from "./components/input-area/InputArea.svelte"
 </script>
 
 <svelte:head>
@@ -16,9 +16,7 @@
   <FullScreenDialog title="How to play" storeProp="helpVisible"/>
 
   <Header/>
-  <div class="input-section">
-
-  </div>
+  <InputArea/>
   <Keyboard/>
 </main>
 
@@ -26,12 +24,5 @@
   .main-flex{
     display: flex;
     flex-direction: column;
-  }
-
-  .input-section {
-    flex: 0.25 1;
-    align-items: center;
-    display: flex;
-    justify-content: center;
   }
 </style>

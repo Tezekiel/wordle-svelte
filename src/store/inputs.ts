@@ -1,10 +1,10 @@
 import { writable } from 'svelte/store'
 
-interface Inputs {
+export interface Inputs {
   rows: InputRow[]
 }
 
-interface InputRow {
+export interface InputRow {
   done: boolean,
   chars: string[]
 }
