@@ -2,7 +2,7 @@
   import { ValidationType } from "./model/types";
 
   export let character = ""
-  export let type: ValidationType
+  export let type: ValidationType = ValidationType.NONE
 
   const bgFromType = (type: ValidationType) => {
     switch (type) {
