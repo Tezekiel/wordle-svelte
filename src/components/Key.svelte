@@ -1,7 +1,13 @@
 <script lang="ts">
+  import { bgFromValidation } from "./utils/utils.ts";
+  import { ValidationState } from "./model/types";
+  import { resolveClick } from "../store/inputs";
   export let keyValue = ""
   export let isActions = false
+  export let validation: ValidationState = ValidationState.NONE
   let element
+
+  $: background = bgFromValidation(validation)
 
   export const forceClick = () => {
     element.click()
@@ -12,10 +18,8 @@
   }
 
   const handleClick = () => {
-    console.log('clicked')
+    resolveClick(keyValue)
   }
-
-
 </script>
 
 <div class="key {isActions ? 'special container' : 'container'}" bind:this={element} on:click={handleClick}>

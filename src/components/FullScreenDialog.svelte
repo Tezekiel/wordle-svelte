@@ -1,8 +1,7 @@
 <script lang="ts">
-  import { SettingsStore } from "../store/settings"
+  import { SettingsStore, toggleProperty } from "../store/settings"
   import { slide } from "svelte/transition"
   import { IconType } from "../ui-components/model/types";
-  import { toggleProperty } from "../store/utils/utils";
   import IconButton from "../ui-components/IconButton.svelte"
 
   export let storeProp: string = ""

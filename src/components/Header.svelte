@@ -1,7 +1,7 @@
 <script lang="ts">
   import IconButton from "../ui-components/IconButton.svelte";
   import { IconType } from "../ui-components/model/types";
-  import { toggleProperty } from "../store/utils/utils";
+  import { toggleProperty } from "../store/settings"
 
 </script>
 

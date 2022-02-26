@@ -1,25 +1,15 @@
 <script lang="ts">
-  import { ValidationType } from "./model/types";
+  import { ValidationState } from "../model/types";
+  import { bgFromValidation } from "../utils/utils";
 
   export let character = ""
-  export let type: ValidationType = ValidationType.NONE
+  export let validation: ValidationState = ValidationState.NONE
 
-  const bgFromType = (type: ValidationType) => {
-    switch (type) {
-      case ValidationType.NONE:
-        return "black"
-      case ValidationType.EXIST:
-        return "yellow"
-      case ValidationType.CORRECT:
-        return "green"
-    }
-  }
-
-  $: background = bgFromType(type)
+  $: background = bgFromValidation(validation)
 </script>
 
 <div class="wrapper {background}">
-  {character}
+  {character ?? ""}
 </div>
 
 <style>
@@ -37,14 +27,17 @@
     color: #d7dadc;
     text-transform: uppercase;
   }
-  .black{
+
+  .black {
     background-color: #121213;
   }
-  .yellow{
+
+  .yellow {
     background-color: #b59f3b;
     animation: flip .35s linear;
   }
-  .green{
+
+  .green {
     background-color: #538d4e;
     animation: flip .35s linear;
   }
