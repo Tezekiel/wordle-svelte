@@ -1,29 +1,29 @@
 <script lang="ts">
-  import { bgFromValidation } from "./utils/utils.ts";
-  import { ValidationState } from "./model/types";
-  import { resolveClick } from "../store/inputs";
-  export let keyValue = ""
+  import { bgFromCharState } from "./utils/utils.ts";
+  import { InputChar, resolveUserInput } from "../store/inputs";
+  import { CharState } from "./model/types";
+
+  export let inputChar: InputChar = {char: "", state: CharState.NONE}
   export let isActions = false
-  export let validation: ValidationState = ValidationState.NONE
   let element
 
-  $: background = bgFromValidation(validation)
+  $: background = bgFromCharState(inputChar.state)
 
   export const forceClick = () => {
     element.click()
     element.animate([
-      { transform: 'translateY(3px)' },
-      { backgroundColor: 'yellow' }
+      {transform: 'translateY(3px)'},
+      {backgroundColor: 'yellow'}
     ], {duration: 150,})
   }
 
   const handleClick = () => {
-    resolveClick(keyValue)
+    resolveUserInput(inputChar.char)
   }
 </script>
 
 <div class="key {isActions ? 'special container' : 'container'}" bind:this={element} on:click={handleClick}>
-  {keyValue}
+  {inputChar.char}
 </div>
 
 <style>

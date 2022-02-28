@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { ValidationState } from "../model/types";
-  import { bgFromValidation } from "../utils/utils";
+  import { CharState } from "../model/types";
+  import { bgFromCharState } from "../utils/utils";
+  import { InputChar } from "../../store/inputs";
 
-  export let character = ""
-  export let validation: ValidationState = ValidationState.NONE
+  export let inputChar: InputChar | undefined
 
-  $: background = bgFromValidation(validation)
+  $: background = bgFromCharState(inputChar?.state ?? CharState.NONE)
 </script>
 
 <div class="wrapper {background}">
-  {character ?? ""}
+  {inputChar?.char ?? ""}
 </div>
 
 <style>

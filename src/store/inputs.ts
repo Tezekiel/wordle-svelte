@@ -1,5 +1,8 @@
 import { writable } from 'svelte/store'
 import { findLastIndex } from "../utils/arrays";
+import { get } from 'svelte/store';
+import { CharState } from "../components/model/types";
+import { validateRow } from "./usecase/validateRow";
 
 export interface Inputs {
   rows: InputRow[]
@@ -7,7 +10,12 @@ export interface Inputs {
 
 export interface InputRow {
   done: boolean,
-  chars: string[]
+  chars: InputChar[]
+}
+
+export interface InputChar {
+  char?: string,
+  state?: CharState
 }
 
 export const InputsStore = writable<Inputs>(
@@ -25,8 +33,11 @@ export const InputsStore = writable<Inputs>(
 
 // TODO
 const saveRow = () => {
-  // check length
-  // check if exists
+  const row = get(InputsStore).rows.find((row) => row.done === false)
+  console.log(validateRow(row))
+  if(validateRow(row)){
+
+  }
   console.log('ROW SAVED')
 }
 
@@ -34,7 +45,7 @@ const updateLetter = (letter: string) => {
   InputsStore.update((currentState) => {
     const freeRowIndex = currentState.rows.findIndex((row) => row.done === false)
     const freeLetterIndex = currentState.rows[freeRowIndex].chars.findIndex((letter) => !letter)
-    currentState.rows[freeRowIndex].chars[freeLetterIndex] = letter
+    currentState.rows[freeRowIndex].chars[freeLetterIndex] = {char: letter, state: CharState.NONE}
     return currentState
   })
 }
@@ -51,7 +62,7 @@ const deleteLetter = () => {
   })
 }
 
-export const resolveClick = (key: string) => {
+export const resolveUserInput = (key: string) => {
   if (key === 'BACK'){
     deleteLetter()
   } else if (key === 'ENTER'){

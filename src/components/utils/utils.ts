@@ -1,12 +1,12 @@
-import { ValidationState } from "../model/types";
+import { CharState } from "../model/types";
 
-export const bgFromValidation = (type: ValidationState) => {
-  switch (type) {
-    case ValidationState.NONE:
+export const bgFromCharState = (state: CharState) => {
+  switch (state) {
+    case CharState.NONE:
       return "black"
-    case ValidationState.EXIST:
+    case CharState.EXIST:
       return "yellow"
-    case ValidationState.CORRECT:
+    case CharState.CORRECT:
       return "green"
   }
 }

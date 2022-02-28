@@ -1,14 +1,13 @@
 <script lang="ts">
   import { InputRow } from "../../store/inputs"
-  import InputBlock from "./InputBlock.svelte"
-  import { ValidationState } from "../model/types";
+  import InputCharBox from "./InputCharBox.svelte"
 
   export let row: InputRow
 </script>
 
 <div class="wrapper">
-  {#each row.chars as character}
-    <InputBlock {character} validation={ValidationState.NONE}/>
+  {#each row.chars as inputChar}
+    <InputCharBox {inputChar} />
   {/each}
 </div>
 
