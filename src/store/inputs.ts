@@ -2,7 +2,7 @@ import { writable } from 'svelte/store'
 import { findLastIndex } from "../utils/arrays";
 import { get } from 'svelte/store';
 import { CharState } from "../components/model/types";
-import { validateRow } from "./usecase/validateRow";
+import { validateRow, updateChars } from "./usecase";
 
 export interface Inputs {
   rows: InputRow[]
@@ -31,14 +31,16 @@ export const InputsStore = writable<Inputs>(
   }
 )
 
-// TODO
 const saveRow = () => {
   const row = get(InputsStore).rows.find((row) => row.done === false)
-  console.log(validateRow(row))
-  if(validateRow(row)){
-
+  const rowIndex = get(InputsStore).rows.findIndex((row) => row.done === false)
+  if (validateRow(row)) {
+    const newRow = updateChars(row)
+    InputsStore.update((currentState) => {
+      currentState.rows[rowIndex] = newRow
+      return currentState
+    })
   }
-  console.log('ROW SAVED')
 }
 
 const updateLetter = (letter: string) => {
@@ -63,9 +65,9 @@ const deleteLetter = () => {
 }
 
 export const resolveUserInput = (key: string) => {
-  if (key === 'BACK'){
+  if (key === 'BACK') {
     deleteLetter()
-  } else if (key === 'ENTER'){
+  } else if (key === 'ENTER') {
     saveRow()
   } else {
     updateLetter(key)

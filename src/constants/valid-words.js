@@ -1,3 +1,3 @@
 export const validWords = [
-  'atlas', 'dabar', 'crkva', 'fazan'
+  'atlas', 'dabar', 'crkva', 'fazan', 'batak', 'davno'
 ]
