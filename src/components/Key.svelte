@@ -1,13 +1,15 @@
 <script lang="ts">
   import { bgFromCharState } from "./utils/utils.ts";
-  import { InputChar, resolveUserInput } from "../store/inputs";
+  import { InputChar, InputsStore, resolveUserInput } from "../store/inputs";
   import { CharState } from "./model/types";
+  import { KeyStateStore } from "../store/key-states";
 
   export let inputChar: InputChar = {char: "", state: CharState.NONE}
   export let isActions = false
   let element
 
-  $: background = bgFromCharState(inputChar.state)
+  $: keyState = $KeyStateStore
+  $: background = bgFromCharState(keyState[inputChar.char])
 
   export const forceClick = () => {
     element.click()
@@ -17,16 +19,26 @@
     ], {duration: 150,})
   }
 
+  console.log(background)
+  console.log(keyState)
   const handleClick = () => {
     resolveUserInput(inputChar.char)
   }
 </script>
 
-<div class="key {isActions ? 'special container' : 'container'}" bind:this={element} on:click={handleClick}>
+<div class="key {isActions ? 'special container' : 'container'} {background}"
+     bind:this={element}
+     on:click={handleClick}
+     style="--delay:{`2.2s`} background-color: ">
   {inputChar.char}
 </div>
 
+<!-- TODO za slova koja su pogodjena ne sprema se dobro -->
+<!-- TODO ovo bi trebalo override boje ali nemre zato sto je svelte napravio jako specificnu klasu-->
 <style>
+  div {
+    background-color: rgb(129, 131, 132);
+  }
   .container {
     align-items: center;
     border-radius: 3px;
@@ -38,7 +50,6 @@
     height: 27%;
     width: 48px;
     margin: 4px 2px;
-    background-color: rgb(129, 131, 132);
     justify-content: center;
     -webkit-user-select: none;
     -ms-user-select: none;
