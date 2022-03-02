@@ -7,7 +7,7 @@
   export let index: number = 0
 
   $: background = bgFromCharState(inputChar?.state ?? CharState.NONE)
-  const delay = `${index * 0.5}s`
+  const delay = `${index * 0.4}s`
 </script>
 
 <div class="wrapper {background}" style="--delay:{delay}">

@@ -51,22 +51,22 @@ ul {
 
 .grey {
   transition: background-color 0.5s linear var(--delay);
-  background-color: #565758;
-  animation: flip .35s linear;
+  background-color: #535455;
+  animation: flip .45s linear;
   animation-delay: var(--delay);
 }
 
 .yellow {
   transition: background-color 0.5s linear var(--delay);
   background-color: #b59f3b;
-  animation: flip .35s linear;
+  animation: flip .45s linear;
   animation-delay: var(--delay);
 }
 
 .green {
   transition: background-color 0.5s linear var(--delay);
   background-color: #538d4e;
-  animation: flip .35s linear;
+  animation: flip .45s linear;
   animation-delay: var(--delay);
 }
 
