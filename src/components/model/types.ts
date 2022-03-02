@@ -1,3 +1,3 @@
 export enum CharState {
-  NONE, EXIST, CORRECT
+  NONE, WRONG,EXIST, CORRECT
 }

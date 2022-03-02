@@ -6,8 +6,8 @@
 </script>
 
 <div class="wrapper">
-  {#each row.chars as inputChar}
-    <InputCharBox {inputChar} />
+  {#each row.chars as inputChar, index}
+    <InputCharBox {inputChar} {index} />
   {/each}
 </div>
 

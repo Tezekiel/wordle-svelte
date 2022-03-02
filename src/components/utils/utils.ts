@@ -8,5 +8,7 @@ export const bgFromCharState = (state: CharState) => {
       return "yellow"
     case CharState.CORRECT:
       return "green"
+    case CharState.WRONG:
+      return "grey"
   }
 }

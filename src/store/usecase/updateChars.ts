@@ -11,6 +11,8 @@ export const updateChars = (row: InputRow): InputRow => {
 
 const updateCharState = (char: InputChar, index: number): InputChar => {
   const newChar = {...char}
+  // wrong as default
+  newChar.state = CharState.WRONG
 
   // exact match
   if (wordOfDay[index] === char.char) {

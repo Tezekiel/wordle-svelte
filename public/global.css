@@ -43,3 +43,99 @@ ul {
   height: 1px;
   overflow: hidden;
 }
+
+/* Validated field colors */
+.black {
+  background-color: #121213;
+}
+
+.grey {
+  transition: background-color 0.5s linear var(--delay);
+  background-color: #565758;
+  animation: flip .35s linear;
+  animation-delay: var(--delay);
+}
+
+.yellow {
+  transition: background-color 0.5s linear var(--delay);
+  background-color: #b59f3b;
+  animation: flip .35s linear;
+  animation-delay: var(--delay);
+}
+
+.green {
+  transition: background-color 0.5s linear var(--delay);
+  background-color: #538d4e;
+  animation: flip .35s linear;
+  animation-delay: var(--delay);
+}
+
+/* Animations */
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg);
+  }
+
+  50% {
+    transform: rotateX(90deg);
+  }
+
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+@keyframes happy {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-1vh);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes grow {
+  0% {
+    font-size: 0px;
+  }
+
+  100% {
+    font-size: 32px;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0px);
+  }
+
+  16% {
+    transform: translateX(-3px);
+  }
+
+  33% {
+    transform: translateX(6px);
+  }
+
+  50% {
+    transform: translateX(-6px);
+  }
+
+  66% {
+    transform: translateX(6px);
+  }
+
+  83% {
+    transform: translateX(-6px);
+  }
+
+  100% {
+    transform: translateX(3px);
+  }
+}

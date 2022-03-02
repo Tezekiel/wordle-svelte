@@ -4,11 +4,13 @@
   import { InputChar } from "../../store/inputs";
 
   export let inputChar: InputChar | undefined
+  export let index: number = 0
 
   $: background = bgFromCharState(inputChar?.state ?? CharState.NONE)
+  const delay = `${index * 0.5}s`
 </script>
 
-<div class="wrapper {background}">
+<div class="wrapper {background}" style="--delay:{delay}">
   {inputChar?.char ?? ""}
 </div>
 
@@ -28,17 +30,5 @@
     text-transform: uppercase;
   }
 
-  .black {
-    background-color: #121213;
-  }
 
-  .yellow {
-    background-color: #b59f3b;
-    animation: flip .35s linear;
-  }
-
-  .green {
-    background-color: #538d4e;
-    animation: flip .35s linear;
-  }
 </style>
