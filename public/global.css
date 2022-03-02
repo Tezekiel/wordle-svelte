@@ -45,6 +45,10 @@ ul {
 }
 
 /* Validated field colors */
+.default {
+  background-color: #818384;
+}
+
 .black {
   background-color: #121213;
 }

@@ -26,19 +26,15 @@
   }
 </script>
 
-<div class="key {isActions ? 'special container' : 'container'} {background}"
+<div class="key {isActions ? 'special container' : 'container' } {background} default"
      bind:this={element}
      on:click={handleClick}
-     style="--delay:{`2.2s`} background-color: ">
+     style="--delay:{`2.2s`}">
   {inputChar.char}
 </div>
 
 <!-- TODO za slova koja su pogodjena ne sprema se dobro -->
-<!-- TODO ovo bi trebalo override boje ali nemre zato sto je svelte napravio jako specificnu klasu-->
 <style>
-  div {
-    background-color: rgb(129, 131, 132);
-  }
   .container {
     align-items: center;
     border-radius: 3px;
