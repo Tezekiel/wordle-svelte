@@ -19,8 +19,6 @@
     ], {duration: 150,})
   }
 
-  console.log(background)
-  console.log(keyState)
   const handleClick = () => {
     resolveUserInput(inputChar.char)
   }
@@ -33,7 +31,6 @@
   {inputChar.char}
 </div>
 
-<!-- TODO za slova koja su pogodjena ne sprema se dobro -->
 <style>
   .container {
     align-items: center;

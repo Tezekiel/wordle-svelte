@@ -28,7 +28,6 @@ export const updateKeyState = (newChar: InputChar) => {
         state[newChar.char] = newChar.state
     }
 
-    console.log(state)
     return state
   })
 }

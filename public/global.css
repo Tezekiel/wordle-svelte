@@ -55,7 +55,7 @@ ul {
 
 .grey {
   transition: background-color 0.5s linear var(--delay);
-  background-color: #535455;
+  background-color: #434445;
   animation: flip .45s linear;
   animation-delay: var(--delay);
 }

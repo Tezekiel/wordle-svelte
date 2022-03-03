@@ -5,7 +5,9 @@ import { updateKeyState } from "../key-states";
 
 export const updateChars = (row: InputRow): InputRow => {
   const newRow = {...row}.chars.map((char, i) => {
-    return updateCharState(char, i)
+    const newChar = updateCharState(char, i)
+    updateKeyState(newChar)
+    return newChar
   })
   return {done: true, chars: newRow}
 }
@@ -25,7 +27,6 @@ const updateCharState = (char: InputChar, index: number): InputChar => {
     newChar.state = CharState.EXIST
     return newChar
   }
-  updateKeyState(newChar)
   // default, stays as is
   return newChar
 }
