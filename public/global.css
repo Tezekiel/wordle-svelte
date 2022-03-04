@@ -80,11 +80,9 @@ ul {
   0% {
     transform: rotateX(0deg);
   }
-
   50% {
     transform: rotateX(90deg);
   }
-
   100% {
     transform: rotateX(0deg);
   }
@@ -94,11 +92,9 @@ ul {
   0% {
     transform: translateY(0px);
   }
-
   50% {
     transform: translateY(-1vh);
   }
-
   100% {
     transform: translateY(0px);
   }
@@ -106,9 +102,8 @@ ul {
 
 @keyframes grow {
   0% {
-    font-size: 0px;
+    font-size: 0;
   }
-
   100% {
     font-size: 32px;
   }
@@ -118,27 +113,21 @@ ul {
   0% {
     transform: translateX(0px);
   }
-
   16% {
     transform: translateX(-3px);
   }
-
   33% {
     transform: translateX(6px);
   }
-
   50% {
     transform: translateX(-6px);
   }
-
   66% {
     transform: translateX(6px);
   }
-
   83% {
     transform: translateX(-6px);
   }
-
   100% {
     transform: translateX(3px);
   }
