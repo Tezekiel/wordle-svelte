@@ -3,7 +3,7 @@ import { CharState } from "../model/types";
 export const bgFromCharState = (state: CharState) => {
   switch (state) {
     case CharState.NONE:
-      return "black"
+      return "empty"
     case CharState.EXIST:
       return "yellow"
     case CharState.CORRECT:

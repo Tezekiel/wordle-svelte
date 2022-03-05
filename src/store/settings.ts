@@ -9,7 +9,15 @@ interface Settings {
 export const SettingsStore = writable<Settings>({
   helpVisible: false,
   settingsVisible: false,
-  darkMode: true
+  darkMode: false
+})
+
+SettingsStore.subscribe((state) => {
+  if (state.darkMode) {
+    window.document.body.classList.add('dark-mode')
+  } else {
+    window.document.body.classList.remove('dark-mode')
+  }
 })
 
 export const toggleProperty = (property: string) => {

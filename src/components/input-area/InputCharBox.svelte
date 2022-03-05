@@ -20,15 +20,19 @@
     box-sizing: border-box;
     align-items: center;
     justify-content: center;
-    border: 1px solid #3a3a3a;
+    border: 1px solid var(--on-dark-secondary);
     width: 6vh;
     height: 6vh;
     font-size: 1.7rem;
     font-weight: 600;
     padding: 1px;
-    color: #d7dadc;
+    color: var(--on-light-secondary);
     text-transform: uppercase;
   }
+  :global(body.dark-mode) .wrapper {
+    color: var(--on-dark-secondary);
+  }
+
 
 
 </style>

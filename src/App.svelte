@@ -3,6 +3,15 @@
   import FullScreenDialog from "./components/FullScreenDialog.svelte";
   import Keyboard from "./components/Keyboard.svelte";
   import InputArea from "./components/input-area/InputArea.svelte"
+  import Switch from "./ui-components/Switch.svelte"
+  import { SettingsStore, toggleProperty } from "./store/settings";
+  import { get } from 'svelte/store';
+
+  let checked = get(SettingsStore).darkMode
+
+  const handleChange = () => {
+    toggleProperty('darkMode')
+  }
 </script>
 
 <svelte:head>
@@ -10,10 +19,11 @@
 </svelte:head>
 
 <main class="game-container main-flex">
-  <FullScreenDialog title="Settings" storeProp="settingsVisible">
-    <p>TEST child element</p>
-  </FullScreenDialog>
   <FullScreenDialog title="How to play" storeProp="helpVisible"/>
+
+  <FullScreenDialog title="Settings" storeProp="settingsVisible">
+    <Switch bind:checked on:click={handleChange}/>
+  </FullScreenDialog>
 
   <Header/>
   <InputArea/>
@@ -21,7 +31,7 @@
 </main>
 
 <style>
-  .main-flex{
+  .main-flex {
     display: flex;
     flex-direction: column;
   }

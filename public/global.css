@@ -6,11 +6,35 @@
   padding: 0;
 }
 
+/* Colors */
+:root {
+  --light-bg: #f2eee2;
+  --on-light: #0084f6;
+  --on-light-secondary: #3a3a3a;
+
+  --dark-bg: #141414;
+  --on-dark: #fff;
+  --on-dark-secondary: #a3a3a3;
+
+  --default-grey: #818384;
+  --almost-black: #121213;
+  --empty: #00000000;
+
+  --validation-grey: #434445;
+  --validation-yellow: #b59f3b;
+  --validation-green: #538d4e;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #141414;
   line-height: 1.6;
-  color: #fff;
+  background-color: var(--light-bg);
+  color: var(--on-light);
+}
+
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--on-dark);
 }
 
 ul {
@@ -46,30 +70,30 @@ ul {
 
 /* Validated field colors */
 .default {
-  background-color: #818384;
+  background-color: var(--default-grey);
 }
 
-.black {
-  background-color: #121213;
+.empty {
+  background-color: var(--empty);
 }
 
 .grey {
   transition: background-color 0.5s linear var(--delay);
-  background-color: #434445;
+  background-color: var(--validation-grey);
   animation: flip .45s linear;
   animation-delay: var(--delay);
 }
 
 .yellow {
   transition: background-color 0.5s linear var(--delay);
-  background-color: #b59f3b;
+  background-color: var(--validation-yellow);
   animation: flip .45s linear;
   animation-delay: var(--delay);
 }
 
 .green {
   transition: background-color 0.5s linear var(--delay);
-  background-color: #538d4e;
+  background-color: var(--validation-green);
   animation: flip .45s linear;
   animation-delay: var(--delay);
 }
