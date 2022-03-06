@@ -4,6 +4,7 @@
   import Keyboard from "./components/Keyboard.svelte";
   import InputArea from "./components/input-area/InputArea.svelte"
   import Switch from "./ui-components/Switch.svelte"
+  import SettingsItem from "./ui-components/SettingsItem.svelte"
   import { SettingsStore, toggleProperty } from "./store/settings";
   import { get } from 'svelte/store';
 
@@ -22,7 +23,10 @@
   <FullScreenDialog title="How to play" storeProp="helpVisible"/>
 
   <FullScreenDialog title="Settings" storeProp="settingsVisible">
-    <Switch bind:checked on:click={handleChange}/>
+    <SettingsItem
+      bind:checked on:click={handleChange}
+      title="{'Dark mode'}"
+      subtitle="{'Come to the dark side'}"/>
   </FullScreenDialog>
 
   <Header/>

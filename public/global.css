@@ -6,15 +6,21 @@
   padding: 0;
 }
 
+ul {
+  list-style: none;
+}
+
 /* Colors */
 :root {
   --light-bg: #f2eee2;
   --on-light: #0084f6;
   --on-light-secondary: #3a3a3a;
+  --on-light-terciary: #565656;
 
   --dark-bg: #141414;
   --on-dark: #fff;
   --on-dark-secondary: #e3e3e3;
+  --on-dark-terciary: #999;
 
   --default-grey: #818384;
   --almost-black: #121213;
@@ -35,10 +41,6 @@ body {
 body.dark-mode {
   background-color: var(--dark-bg);
   color: var(--on-dark);
-}
-
-ul {
-  list-style: none;
 }
 
 .app-container {
