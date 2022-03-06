@@ -7,11 +7,16 @@
   import SettingsItem from "./ui-components/SettingsItem.svelte"
   import { SettingsStore, toggleProperty } from "./store/settings";
   import { get } from 'svelte/store';
+  import { Validation } from "./store/usecase/validateRow";
 
   let checked = get(SettingsStore).darkMode
 
   const handleChange = () => {
     toggleProperty('darkMode')
+  }
+
+  const handleValidation = (event) => {
+    const validation: Validation = event.detail.status
   }
 </script>
 
@@ -33,7 +38,7 @@
 
   <Header/>
   <InputArea/>
-  <Keyboard/>
+  <Keyboard on:validation={handleValidation}/>
 </main>
 
 <style>

@@ -3,6 +3,8 @@
   import { InputChar, InputsStore, resolveUserInput } from "../store/inputs";
   import { CharState } from "./model/types";
   import { KeyStateStore } from "../store/key-states";
+  import { Validation } from "../store/usecase/validateRow";
+  import { createEventDispatcher } from "svelte";
 
   export let inputChar: InputChar = {char: "", state: CharState.NONE}
   export let isActions = false
@@ -10,6 +12,8 @@
 
   $: keyState = $KeyStateStore
   $: background = bgFromCharState(keyState[inputChar.char])
+
+  const dispatch = createEventDispatcher();
 
   export const forceClick = () => {
     element.click()
@@ -20,7 +24,10 @@
   }
 
   const handleClick = () => {
-    resolveUserInput(inputChar.char)
+    let result: Validation | undefined = resolveUserInput(inputChar.char)
+    if (result) dispatch('validation', {
+      status: result
+    })
   }
 </script>
 

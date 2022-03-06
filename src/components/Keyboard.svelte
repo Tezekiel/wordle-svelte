@@ -17,17 +17,26 @@
     const component = allKeys[key]
     component && component.forceClick()
   }
+
+
 </script>
 
 <div class="wrapper">
   <div class="actions">
     {#each keyActions as key}
-      <Key inputChar="{{char:key.toUpperCase(), state: CharState.NONE}}" isActions="true" bind:this={allKeys[key]}/>
+      <Key inputChar="{{char:key.toUpperCase(), state: CharState.NONE}}"
+           isActions="true"
+           bind:this={allKeys[key]}
+           on:validation
+      />
     {/each}
   </div>
   <div class="container">
     {#each keys as key}
-      <Key inputChar="{{char:key.toUpperCase(), state: CharState.NONE}}" bind:this={allKeys[key]}/>
+      <Key inputChar="{{char:key.toUpperCase(), state: CharState.NONE}}"
+           bind:this={allKeys[key]}
+           on:validation
+      />
     {/each}
   </div>
 </div>

@@ -3,6 +3,7 @@ import { findLastIndex } from "../utils/arrays";
 import { get } from 'svelte/store';
 import { CharState } from "../components/model/types";
 import { validateRow, updateChars } from "./usecase";
+import { Validation } from "./usecase/validateRow";
 
 export interface Inputs {
   rows: InputRow[]
@@ -31,16 +32,26 @@ export const InputsStore = writable<Inputs>(
   }
 )
 
-const saveRow = () => {
+function onValidation(row: InputRow, rowIndex: number) {
+  const validationResult = validateRow(row)
+  switch (validationResult){
+    case Validation.OK:
+      const newRow = updateChars(row)
+      InputsStore.update((currentState) => {
+        currentState.rows[rowIndex] = newRow
+        return currentState
+      })
+      break;
+    default:
+      return validationResult
+  }
+
+}
+
+const saveRowOrError = () => {
   const row = get(InputsStore).rows.find((row) => row.done === false)
   const rowIndex = get(InputsStore).rows.findIndex((row) => row.done === false)
-  if (validateRow(row)) {
-    const newRow = updateChars(row)
-    InputsStore.update((currentState) => {
-      currentState.rows[rowIndex] = newRow
-      return currentState
-    })
-  }
+  return onValidation(row, rowIndex);
 }
 
 const updateLetter = (letter: string) => {
@@ -68,7 +79,7 @@ export const resolveUserInput = (key: string) => {
   if (key === 'BACK') {
     deleteLetter()
   } else if (key === 'ENTER') {
-    saveRow()
+    return saveRowOrError()
   } else {
     updateLetter(key)
   }
