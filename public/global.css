@@ -14,13 +14,13 @@
 
   --dark-bg: #141414;
   --on-dark: #fff;
-  --on-dark-secondary: #a3a3a3;
+  --on-dark-secondary: #e3e3e3;
 
   --default-grey: #818384;
   --almost-black: #121213;
   --empty: #00000000;
 
-  --validation-grey: #434445;
+  --validation-grey: #666;
   --validation-yellow: #b59f3b;
   --validation-green: #538d4e;
 }
