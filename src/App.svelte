@@ -7,16 +7,20 @@
   import SettingsItem from "./ui-components/SettingsItem.svelte"
   import { SettingsStore, toggleProperty } from "./store/settings";
   import { get } from 'svelte/store';
-  import { Validation } from "./store/usecase/validateRow";
+  import { Snackbar } from 'svelte-mui';
+  import { messageFromValidation } from "./mappers/message-from-validation";
 
   let checked = get(SettingsStore).darkMode
+  let errorMessage
+  let visible = false
 
   const handleChange = () => {
     toggleProperty('darkMode')
   }
 
   const handleValidation = (event) => {
-    const validation: Validation = event.detail.status
+    errorMessage = messageFromValidation(event);
+    visible = true
   }
 </script>
 
@@ -35,6 +39,10 @@
       title="{'Dark mode'}"
       subtitle="{'Come to the dark side'}"/>
   </FullScreenDialog>
+
+  <Snackbar bind:visible>
+    {errorMessage}
+  </Snackbar>
 
   <Header/>
   <InputArea/>
