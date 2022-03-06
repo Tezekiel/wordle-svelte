@@ -3,7 +3,7 @@
   import FullScreenDialog from "./components/FullScreenDialog.svelte";
   import Keyboard from "./components/Keyboard.svelte";
   import InputArea from "./components/input-area/InputArea.svelte"
-  import Switch from "./ui-components/Switch.svelte"
+  import Help from "./ui-components/Help.svelte"
   import SettingsItem from "./ui-components/SettingsItem.svelte"
   import { SettingsStore, toggleProperty } from "./store/settings";
   import { get } from 'svelte/store';
@@ -20,7 +20,9 @@
 </svelte:head>
 
 <main class="game-container main-flex">
-  <FullScreenDialog title="How to play" storeProp="helpVisible"/>
+  <FullScreenDialog title="How to play" storeProp="helpVisible">
+    <Help/>
+  </FullScreenDialog>
 
   <FullScreenDialog title="Settings" storeProp="settingsVisible">
     <SettingsItem
