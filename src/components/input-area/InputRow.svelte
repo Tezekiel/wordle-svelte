@@ -3,9 +3,11 @@
   import InputCharBox from "./InputCharBox.svelte"
 
   export let row: InputRow
+  export let shakeRow = false
+
 </script>
 
-<div class="wrapper">
+<div class="wrapper" class:shake={shakeRow & row.current}>
   {#each row.chars as inputChar, index}
     <InputCharBox {inputChar} {index} />
   {/each}

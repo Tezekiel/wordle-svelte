@@ -13,17 +13,21 @@
   let checked = get(SettingsStore).darkMode
   let errorMessage
   let visible = false
+  let shakeRow = false
 
   const handleChange = () => {
     toggleProperty('darkMode')
   }
 
   const handleValidation = (event) => {
+    shakeRow = false
     errorMessage = messageFromValidation(event);
     if (errorMessage) {
       visible = true
+      shakeRow = true
+      // animation ends in 400ms, reset it
+      setTimeout(() => shakeRow = false, 400)
     }
-
   }
 </script>
 
@@ -43,12 +47,12 @@
       subtitle="{'Come to the dark side'}"/>
   </FullScreenDialog>
 
-  <Snackbar bind:visible timeout="2" >
+  <Snackbar bind:visible timeout="2">
     {errorMessage}
   </Snackbar>
 
   <Header/>
-  <InputArea/>
+  <InputArea {shakeRow}/>
   <Keyboard on:validation={handleValidation}/>
 </main>
 

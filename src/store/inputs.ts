@@ -10,6 +10,7 @@ export interface Inputs {
 }
 
 export interface InputRow {
+  current: boolean,
   done: boolean,
   chars: InputChar[]
 }
@@ -22,23 +23,24 @@ export interface InputChar {
 export const InputsStore = writable<Inputs>(
   {
     rows: [
-      {done: false, chars: new Array(5)},
-      {done: false, chars: new Array(5)},
-      {done: false, chars: new Array(5)},
-      {done: false, chars: new Array(5)},
-      {done: false, chars: new Array(5)},
-      {done: false, chars: new Array(5)}
+      {current: true, done: false, chars: new Array(5)},
+      {current: false, done: false, chars: new Array(5)},
+      {current: false, done: false, chars: new Array(5)},
+      {current: false, done: false, chars: new Array(5)},
+      {current: false, done: false, chars: new Array(5)},
+      {current: false, done: false, chars: new Array(5)}
     ]
   }
 )
 
 function onValidation(row: InputRow, rowIndex: number) {
   const validationResult = validateRow(row)
-  switch (validationResult){
+  switch (validationResult) {
     case Validation.OK:
       const newRow = updateChars(row)
       InputsStore.update((currentState) => {
         currentState.rows[rowIndex] = newRow
+        currentState.rows[rowIndex + 1] = {current: true, done: false, chars: new Array(5)}
         return currentState
       })
       break;
@@ -49,14 +51,14 @@ function onValidation(row: InputRow, rowIndex: number) {
 }
 
 const saveRowOrError = () => {
-  const row = get(InputsStore).rows.find((row) => row.done === false)
-  const rowIndex = get(InputsStore).rows.findIndex((row) => row.done === false)
+  const row = get(InputsStore).rows.find((row) => row.current)
+  const rowIndex = get(InputsStore).rows.findIndex((row) => row.current)
   return onValidation(row, rowIndex);
 }
 
 const updateLetter = (letter: string) => {
   InputsStore.update((currentState) => {
-    const freeRowIndex = currentState.rows.findIndex((row) => row.done === false)
+    const freeRowIndex = currentState.rows.findIndex((row) => row.current)
     const freeLetterIndex = currentState.rows[freeRowIndex].chars.findIndex((letter) => !letter)
     currentState.rows[freeRowIndex].chars[freeLetterIndex] = {char: letter, state: CharState.NONE}
     return currentState
@@ -65,7 +67,7 @@ const updateLetter = (letter: string) => {
 
 const deleteLetter = () => {
   InputsStore.update((currentState) => {
-    const freeRowIndex = currentState.rows.findIndex((row) => row.done === false)
+    const freeRowIndex = currentState.rows.findIndex((row) => row.current )
     const lastLetterIndex = findLastIndex(
       currentState.rows[freeRowIndex].chars,
       (letter) => letter !== undefined

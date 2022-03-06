@@ -9,7 +9,7 @@ export const updateChars = (row: InputRow): InputRow => {
     updateKeyState(newChar)
     return newChar
   })
-  return {done: true, chars: newRow}
+  return {current: false, done: true, chars: newRow}
 }
 
 const updateCharState = (char: InputChar, index: number): InputChar => {

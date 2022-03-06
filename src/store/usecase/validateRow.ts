@@ -6,6 +6,8 @@ export enum Validation {
   OK,
   // game done
   Done,
+  // game lost
+  Lost,
   // errors
   AlreadyDone,
   TooShort,

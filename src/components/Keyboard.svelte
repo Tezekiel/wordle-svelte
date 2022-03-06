@@ -18,7 +18,6 @@
     component && component.forceClick()
   }
 
-
 </script>
 
 <div class="wrapper">

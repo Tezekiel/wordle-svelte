@@ -2,13 +2,14 @@
   import { InputsStore } from "../../store/inputs";
   import InputRow from "./InputRow.svelte"
 
+  export let shakeRow = false
   $: inputs = $InputsStore
 </script>
 
 <div class="wrapper">
   <div class="container">
-    {#each inputs.rows as row}
-      <InputRow {row}/>
+    {#each inputs.rows as row, index}
+      <InputRow {row} {shakeRow}/>
     {/each}
   </div>
 </div>
