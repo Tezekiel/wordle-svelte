@@ -20,7 +20,10 @@
 
   const handleValidation = (event) => {
     errorMessage = messageFromValidation(event);
-    visible = true
+    if (errorMessage) {
+      visible = true
+    }
+
   }
 </script>
 
@@ -40,7 +43,7 @@
       subtitle="{'Come to the dark side'}"/>
   </FullScreenDialog>
 
-  <Snackbar bind:visible>
+  <Snackbar bind:visible timeout="2" >
     {errorMessage}
   </Snackbar>
 

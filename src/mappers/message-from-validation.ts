@@ -5,6 +5,8 @@ export const messageFromValidation = (event) => {
   switch (validation) {
     case Validation.OK:
       break;
+    case Validation.Done:
+      break;
     case Validation.AlreadyDone:
       return "Something went wrong."
     case Validation.TooShort:

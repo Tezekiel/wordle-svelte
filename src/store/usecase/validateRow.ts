@@ -2,7 +2,11 @@ import type { InputRow } from "../inputs";
 import { validWords } from "../../constants/valid-words.js"
 
 export enum Validation {
+  // row done
   OK,
+  // game done
+  Done,
+  // errors
   AlreadyDone,
   TooShort,
   NotInList
