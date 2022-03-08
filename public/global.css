@@ -162,3 +162,17 @@ body.dark-mode {
     transform: translateX(3px);
   }
 }
+
+/* For svelte-mui */
+.disabled,
+[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.disabled .disabled,
+.disabled [disabled],
+[disabled] .disabled,
+[disabled] [disabled] {
+  opacity: 1;
+}

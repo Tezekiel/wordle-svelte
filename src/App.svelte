@@ -7,7 +7,7 @@
   import SettingsItem from "./ui-components/SettingsItem.svelte"
   import { SettingsStore, toggleProperty } from "./store/settings";
   import { get } from 'svelte/store';
-  import { Snackbar, Dialog } from 'svelte-mui';
+  import { Snackbar } from 'svelte-mui';
   import { messageFromValidation } from "./mappers/message-from-validation";
   import { Validation } from "./store/usecase/validateRow";
   import { wordOfDayString } from "./constants"
