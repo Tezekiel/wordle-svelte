@@ -1,4 +1,4 @@
-import { wordOfDay } from "../../constants"
+import { getWordOfDay } from "../../usecases/getWordOfDay"
 import type { InputChar, InputRow } from "../inputs";
 import { CharState } from "../../components/model/types";
 import { updateKeyState } from "../key-states";
@@ -13,6 +13,7 @@ export const updateChars = (row: InputRow): InputRow => {
 }
 
 const updateCharState = (char: InputChar, index: number): InputChar => {
+  let wordOfDay = getWordOfDay
   const newChar = {...char}
   // wrong as default
   newChar.state = CharState.WRONG
