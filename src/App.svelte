@@ -73,10 +73,12 @@
       subtitle="{'Come to the dark side'}"/>
   </FullScreenDialog>
 
+  <!-- Invalid try -->
   <Snackbar bind:visible timeout="2">
     {errorMessage}
   </Snackbar>
 
+  <!-- Lost -->
   <Snackbar bind:visible={showLostDialog} timeout="0">
     Solution was: {wordOfDayString}
   </Snackbar>
