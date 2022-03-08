@@ -7,19 +7,23 @@
   import SettingsItem from "./ui-components/SettingsItem.svelte"
   import { SettingsStore, toggleProperty } from "./store/settings";
   import { get } from 'svelte/store';
-  import { Snackbar } from 'svelte-mui';
+  import { Snackbar, Dialog } from 'svelte-mui';
   import { messageFromValidation } from "./mappers/message-from-validation";
+  import { Validation } from "./store/usecase/validateRow";
+  import { wordOfDayString } from "./constants"
 
   let checked = get(SettingsStore).darkMode
   let errorMessage
   let visible = false
   let shakeRow = false
+  let showWinDialog = false
+  let showLostDialog = false
 
   const handleChange = () => {
     toggleProperty('darkMode')
   }
 
-  const handleValidation = (event) => {
+  function handleErrors(event) {
     shakeRow = false
     errorMessage = messageFromValidation(event);
     if (errorMessage) {
@@ -29,6 +33,28 @@
       setTimeout(() => shakeRow = false, 400)
     }
   }
+
+  function handleWin() {
+    showWinDialog = true
+  }
+
+  function handleLoss() {
+    showLostDialog = true
+  }
+
+  const handleValidation = (event) => {
+    switch (event.detail.status as Validation) {
+      case Validation.Done:
+        handleWin();
+        break;
+      case Validation.Lost:
+        handleLoss()
+        break;
+      default:
+        handleErrors(event)
+    }
+  }
+
 </script>
 
 <svelte:head>
@@ -49,6 +75,10 @@
 
   <Snackbar bind:visible timeout="2">
     {errorMessage}
+  </Snackbar>
+
+  <Snackbar bind:visible={showLostDialog} timeout="0">
+    Solution was: {wordOfDayString}
   </Snackbar>
 
   <Header/>
