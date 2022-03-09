@@ -10,7 +10,7 @@
   import { Snackbar } from 'svelte-mui';
   import { messageFromValidation } from "./mappers/message-from-validation";
   import { Validation } from "./store/usecase/validateRow";
-  import { getWordOfDayString } from "./usecases/getWordOfDay"
+  import { getWordOfDayString } from "./usecases/getWordOfDay/getWordOfDay"
 
   let checked = get(SettingsStore).darkMode
   let errorMessage
@@ -80,7 +80,7 @@
 
   <!-- Lost -->
   <Snackbar bind:visible={showLostDialog} timeout="0">
-    Solution was: {getWordOfDayString}
+    Solution was: {getWordOfDayString()}
   </Snackbar>
 
   <Header/>
