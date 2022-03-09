@@ -3,7 +3,7 @@
   import { InputChar, InputsStore, resolveUserInput } from "../store/inputs";
   import { CharState } from "./model/types";
   import { KeyStateStore } from "../store/key-states";
-  import { Validation } from "../store/usecase/validateRow";
+  import { Validation } from "../store/usecase/validateRow/validateRow";
   import { createEventDispatcher } from "svelte";
 
   export let inputChar: InputChar = {char: "", state: CharState.NONE}

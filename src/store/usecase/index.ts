@@ -1,2 +1,2 @@
-export { validateRow } from './validateRow'
-export { updateChars } from './updateChars'
+export { validateRow } from './validateRow/validateRow'
+export { updateChars } from './updateChars/updateChars'

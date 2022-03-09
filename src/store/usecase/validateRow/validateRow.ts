@@ -1,5 +1,5 @@
-import type { InputRow } from "../inputs";
-import { validWords } from "../../constants/valid-words.js"
+import type { InputRow } from "../../inputs";
+import { validWords } from "../../../constants"
 
 export enum Validation {
   // row done

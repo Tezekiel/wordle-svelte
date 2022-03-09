@@ -1,6 +1,6 @@
 <script lang="ts">
   import InputRow from "./../components/input-area/InputRow.svelte"
-  import { exampleOne, exampleTwo, exampleThree } from "../constants/examples";
+  import { exampleOne, exampleTwo, exampleThree } from "../constants";
 
 </script>
 

@@ -1,4 +1,4 @@
-import { Validation } from "../store/usecase/validateRow";
+import { Validation } from "../store/usecase/validateRow/validateRow";
 
 export const messageFromValidation = (event) => {
   const validation: Validation = event.detail.status

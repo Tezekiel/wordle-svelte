@@ -1,7 +1,7 @@
-import { getWordOfDay } from "../../usecases/getWordOfDay/getWordOfDay"
-import type { InputChar, InputRow } from "../inputs";
-import { CharState } from "../../components/model/types";
-import { updateKeyState } from "../key-states";
+import { getWordOfDay } from "../../../usecases/getWordOfDay/getWordOfDay"
+import type { InputChar, InputRow } from "../../inputs";
+import { CharState } from "../../../components/model/types";
+import { updateKeyState } from "../../key-states";
 
 export const updateChars = (row: InputRow): InputRow => {
   const newRow = {...row}.chars.map((char, i) => {

@@ -3,7 +3,7 @@ import { findLastIndex } from "../utils/arrays";
 import { get } from 'svelte/store';
 import { CharState } from "../components/model/types";
 import { validateRow, updateChars } from "./usecase";
-import { Validation } from "./usecase/validateRow";
+import { Validation } from "./usecase/validateRow/validateRow";
 
 export interface Inputs {
   rows: InputRow[]

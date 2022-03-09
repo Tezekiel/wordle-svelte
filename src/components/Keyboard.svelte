@@ -1,7 +1,6 @@
 <script>
   import Key from "../components/Key.svelte"
-  import { characters } from "../constants/characters.js"
-  import { actions } from "../constants/actions.js"
+  import { characters, actions } from "../constants"
   import { CharState } from "./model/types";
 
   const keys = characters

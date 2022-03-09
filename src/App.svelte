@@ -9,7 +9,7 @@
   import { get } from 'svelte/store';
   import { Snackbar } from 'svelte-mui';
   import { messageFromValidation } from "./mappers/message-from-validation";
-  import { Validation } from "./store/usecase/validateRow";
+  import { Validation } from "./store/usecase/validateRow/validateRow";
   import { getWordOfDayString } from "./usecases/getWordOfDay/getWordOfDay"
 
   let checked = get(SettingsStore).darkMode
