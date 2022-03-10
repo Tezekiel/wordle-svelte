@@ -1,4 +1,4 @@
-import { getWordOfDay, getWordOfDayString, potentialsWords } from "./getWordOfDay";
+import { getWordOfDay, getWordOfDayString, potentialWords } from "./getWordOfDay";
 
 describe('word of day tests', () => {
   test('returns first string if index is 0 or less than 0', () => {
@@ -18,7 +18,7 @@ describe('word of day tests', () => {
   })
 
   test('returns last word if index is out of bounds', () => {
-    const lastWord = potentialsWords[potentialsWords.length - 1].toUpperCase()
+    const lastWord = potentialWords[potentialWords.length - 1].toUpperCase()
     expect(getWordOfDayString(2000)).toBe(lastWord)
     expect(getWordOfDay(2000).join('')).toBe(lastWord)
   })
