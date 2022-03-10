@@ -1,23 +1,25 @@
 <script lang="ts">
   import InputRow from "./../components/input-area/InputRow.svelte"
   import { exampleOne, exampleTwo, exampleThree } from "../constants";
+  import { localization } from "../store/localization";
 
+  $: lang = $localization
 </script>
 
 <div class="wrapper">
-  <p>Guess the <strong>WORDLE</strong> in 6 tries.</p>
-  <p>Each guess must be a valid 5 letter lewd word. Hit the enter button to submit.</p>
-  <p>After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+  <p>{lang.get('help_text_1a')} <strong>Wordle-Cro</strong> {lang.get('help_text_1b')}</p>
+  <p>{lang.get('help_text_2')}</p>
+  <p>{lang.get('help_text_3')}</p>
   <hr>
-  <h3>Example:</h3>
+  <h3>{lang.get('help_text_4')}</h3>
   <div class="small-row"><InputRow row="{exampleOne}" class="small-row"/></div>
-  <p>The letter <strong>B</strong> is in the word and in the correct spot.</p>
+  <p>{lang.get('help_text_5a')} <strong>B</strong> {lang.get('help_text_5b')}</p>
   <div class="small-row"><InputRow row="{exampleTwo}"/></div>
-  <p>The letter <strong>R</strong> is in the word but in the wrong spot.</p>
+  <p>{lang.get('help_text_6a')} <strong>R</strong> {lang.get('help_text_6b')}</p>
   <div class="small-row"><InputRow row="{exampleThree}"/></div>
-  <p>The letter <strong>V</strong> is not in the word in any spot.</p>
+  <p>{lang.get('help_text_7a')} <strong>V</strong> {lang.get('help_text_7b')}</p>
   <hr>
-  <p>New <strong>WORDLE</strong> is available each day.</p>
+  <p>{lang.get('help_text_8a')} <strong>Wordle-Cro</strong> {lang.get('help_text_8b')}</p>
 </div>
 
 <style>

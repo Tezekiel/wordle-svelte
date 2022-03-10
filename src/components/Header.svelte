@@ -8,7 +8,7 @@
 <div class="wrapper">
   <div class="header">
     <IconButton type={IconType.Help} on:click={() => toggleProperty('helpVisible')}/>
-    <h1>Wordle</h1>
+    <h1>Wordle-Cro</h1>
     <IconButton type={IconType.Settings} on:click={() => toggleProperty('settingsVisible')}/>
   </div>
 </div>

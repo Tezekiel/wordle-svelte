@@ -14,13 +14,14 @@
   import { localization } from "./store/localization";
 
   let checked = get(settings).darkMode
+  let checkedLang = get(settings).isEnglish
   let errorMessage
   let visible = false
   let shakeRow = false
   let showWinDialog = false
   let showLostDialog = false
 
-  $: text = $localization
+  $: lang = $localization
 
   const handleChange = () => {
     toggleProperty('darkMode')
@@ -68,19 +69,19 @@
 </svelte:head>
 
 <main class="game-container main-flex">
-  <FullScreenDialog title="How to play" storeProp="helpVisible">
+  <FullScreenDialog title={lang.get('help_title')} storeProp="helpVisible">
     <Help/>
   </FullScreenDialog>
 
-  <FullScreenDialog title="Settings" storeProp="settingsVisible">
+  <FullScreenDialog title={lang.get('settings')} storeProp="settingsVisible">
     <SettingsItem
       bind:checked on:click={handleChange}
-      title="{'Dark mode'}"
-      subtitle="{'Come to the dark side'}"/>
+      title="{lang.get('dark_mode')}"
+      subtitle="{lang.get('dark_mode_desc')}"/>
     <SettingsItem
-      bind:checked on:click={handleChangeLang}
+      bind:checked={checkedLang} on:click={handleChangeLang}
       title="{'Hrvatski/English'}"
-      subtitle="{'Switch to English for some reason'}"/>
+      subtitle="{lang.get('lang_desc')}"/>
   </FullScreenDialog>
 
   <!-- Invalid try -->
@@ -90,7 +91,7 @@
 
   <!-- Lost -->
   <Snackbar bind:visible={showLostDialog} timeout="0">
-    Solution was: {getWordOfDayString()}
+    {lang.get('solution')} {getWordOfDayString()}
   </Snackbar>
 
   <Header/>
