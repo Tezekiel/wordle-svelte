@@ -48,7 +48,7 @@
     font-size: 14px;
     font-weight: 700;
     height: 27%;
-    width: 48px;
+    width: 40px;
     margin: 4px 2px;
     justify-content: center;
     -webkit-user-select: none;
