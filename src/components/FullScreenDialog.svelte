@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SettingsStore, toggleProperty } from "../store/settings"
+  import { settings, toggleProperty } from "../store/settings"
   import { slide } from "svelte/transition"
   import { IconType } from "../ui-components/model/types";
   import IconButton from "../ui-components/IconButton.svelte"
@@ -7,7 +7,7 @@
   export let storeProp: string = ""
   export let title: string = ""
 
-  $: visible = $SettingsStore[storeProp]
+  $: visible = $settings[storeProp]
 
 </script>
 

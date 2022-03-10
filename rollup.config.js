@@ -6,7 +6,6 @@ import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
-import { babel } from '@rollup/plugin-babel';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -61,7 +60,6 @@ export default {
 			dedupe: ['svelte']
 		}),
 		commonjs(),
-		babel({ babelHelpers: 'bundled' }),
 		typescript({
 			sourceMap: !production,
 			inlineSources: !production

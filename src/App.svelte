@@ -5,19 +5,22 @@
   import InputArea from "./components/input-area/InputArea.svelte"
   import Help from "./ui-components/Help.svelte"
   import SettingsItem from "./ui-components/SettingsItem.svelte"
-  import { SettingsStore, toggleProperty } from "./store/settings";
+  import { settings, toggleProperty } from "./store/settings";
   import { get } from 'svelte/store';
   import { Snackbar } from 'svelte-mui';
   import { messageFromValidation } from "./mappers/message-from-validation";
   import { Validation } from "./store/usecase/validateRow/validateRow";
   import { getWordOfDayString } from "./usecases/getWordOfDay/getWordOfDay"
+  import { localization } from "./store/localization";
 
-  let checked = get(SettingsStore).darkMode
+  let checked = get(settings).darkMode
   let errorMessage
   let visible = false
   let shakeRow = false
   let showWinDialog = false
   let showLostDialog = false
+
+  $: text = $localization
 
   const handleChange = () => {
     toggleProperty('darkMode')
@@ -55,6 +58,9 @@
     }
   }
 
+  const handleChangeLang = () => {
+    toggleProperty('isEnglish')
+  }
 </script>
 
 <svelte:head>
@@ -71,6 +77,10 @@
       bind:checked on:click={handleChange}
       title="{'Dark mode'}"
       subtitle="{'Come to the dark side'}"/>
+    <SettingsItem
+      bind:checked on:click={handleChangeLang}
+      title="{'Hrvatski/English'}"
+      subtitle="{'Switch to English for some reason'}"/>
   </FullScreenDialog>
 
   <!-- Invalid try -->

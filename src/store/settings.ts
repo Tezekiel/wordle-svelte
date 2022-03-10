@@ -4,15 +4,17 @@ interface Settings {
   helpVisible: boolean,
   settingsVisible: boolean,
   darkMode: boolean,
+  isEnglish: boolean,
 }
 
-export const SettingsStore = writable<Settings>({
+export const settings = writable<Settings>({
   helpVisible: false,
   settingsVisible: false,
-  darkMode: false
+  darkMode: false,
+  isEnglish: false
 })
 
-SettingsStore.subscribe((state) => {
+settings.subscribe((state) => {
   if (state.darkMode) {
     window.document.body.classList.add('dark-mode')
   } else {
@@ -21,7 +23,7 @@ SettingsStore.subscribe((state) => {
 })
 
 export const toggleProperty = (property: string) => {
-  SettingsStore.update((currentState) => {
+  settings.update((currentState) => {
     const obj = {...currentState}
     obj[property] = !obj[property]
     return obj
