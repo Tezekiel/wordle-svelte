@@ -2,11 +2,13 @@ import { writable } from 'svelte/store'
 import { findLastIndex } from "../utils/arrays";
 import { get } from 'svelte/store';
 import { CharState } from "../components/model/types";
-import { validateRow, updateChars } from "./usecase";
+import { validateRow } from "./usecase";
 import { Validation } from "./usecase/validateRow/validateRow";
 import { emptyGame } from "./constants/empty-game";
 import { saveOrResetGame, storedGame } from "./storage/storedGame";
 import type { Game, InputRow } from './types/types';
+import { updateKeyState } from "./key-states";
+import { updateCharState } from "./usecase/updateChars/updateChars";
 
 export const gameStore = writable<Game>(storedGame ?? emptyGame)
 gameStore.subscribe((game) => {
@@ -57,6 +59,16 @@ const deleteLetter = () => {
     return currentState
   })
 }
+
+const updateChars = (row: InputRow): InputRow => {
+  const newRow = {...row}.chars.map((char, i) => {
+    const newChar = updateCharState(char, i)
+    updateKeyState(newChar)
+    return newChar
+  })
+  return {current: false, done: true, chars: newRow}
+}
+
 
 export const resolveUserInput = (key: string) => {
   if (key === 'BACK') {

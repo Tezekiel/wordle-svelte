@@ -1,31 +1,24 @@
-import { updateChars } from "./updateChars";
+import { updateCharState } from "./updateChars";
 import { CharState } from "../../../components/model/types";
+import type { InputChar } from "../../types/types";
 
-describe('update chars tests', () => {
-  const inRow = {
-    current: true,
-    done: false,
-    chars: [{
-      char: 'a',
-      state: CharState.NONE
-    }]
+describe('update char state tests', () => {
+  const wordOfDay = "BATAK".split('')
+  const char: InputChar = {
+    char: 'T',
+    state: CharState.NONE,
+  }
+  const wrongChar: InputChar = {
+    char: 'Z',
+    state: CharState.NONE,
   }
 
-  const outRow = {
-    current: false,
-    done: true,
-    chars: [{
-      char: 'a',
-      state: CharState.WRONG
-    }]
-  }
-
-  test('correctly  updates chars', () => {
-    const updated = updateChars(inRow)
-    expect(updated).not.toEqual(inRow)
-    expect(updated.chars[0]).toStrictEqual(outRow.chars[0])
-    expect(updated.chars[0].state).toStrictEqual(outRow.chars[0].state)
-    expect(updated.current).toStrictEqual(outRow.current)
-    expect(updated.done).toStrictEqual(outRow.done)
+  test('correctly updates chars', () => {
+    const correct = updateCharState(char, 2, wordOfDay)
+    const wrong = updateCharState(wrongChar, 0, wordOfDay)
+    const exist = updateCharState(char, 0, wordOfDay)
+    expect(correct.state).toBe(CharState.CORRECT)
+    expect(wrong.state).toBe(CharState.WRONG)
+    expect(exist.state).toBe(CharState.EXIST)
   })
 })

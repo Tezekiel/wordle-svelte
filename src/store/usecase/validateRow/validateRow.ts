@@ -1,4 +1,4 @@
-import type { InputRow } from "../../game";
+import type { InputRow } from "../../types/types";
 import { validWords } from "../../../constants"
 
 export enum Validation {
