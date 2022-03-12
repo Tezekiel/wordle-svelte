@@ -1,20 +1,18 @@
 import { writable } from 'svelte/store'
 
 interface Settings {
-  helpVisible: boolean,
-  settingsVisible: boolean,
   darkMode: boolean,
   isEnglish: boolean,
 }
 
-export const settings = writable<Settings>({
-  helpVisible: false,
-  settingsVisible: false,
+const storedSettings: Settings = JSON.parse(localStorage.getItem('settings'))
+export const settings = writable<Settings>(storedSettings ?? {
   darkMode: false,
   isEnglish: false
 })
 
 settings.subscribe((state) => {
+  localStorage.setItem('settings', JSON.stringify(state))
   if (state.darkMode) {
     window.document.body.classList.add('dark-mode')
   } else {

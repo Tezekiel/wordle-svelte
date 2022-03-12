@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { settings, toggleProperty } from "../store/settings"
   import { slide } from "svelte/transition"
   import { IconType } from "../ui-components/model/types";
   import IconButton from "../ui-components/IconButton.svelte"
+  import { dialogs, toggleDialog } from "../store/dialog-state";
 
   export let storeProp: string = ""
   export let title: string = ""
 
-  $: visible = $settings[storeProp]
+  $: visible = $dialogs[storeProp]
 
 </script>
 
@@ -15,7 +15,7 @@
   <div class="app-container main" transition:slide>
     <div class="title">
       <h1>{title}</h1>
-      <IconButton type={IconType.Close} on:click={() => toggleProperty(storeProp)}/>
+      <IconButton type={IconType.Close} on:click={() => toggleDialog(storeProp)}/>
     </div>
     <slot></slot>
   </div>

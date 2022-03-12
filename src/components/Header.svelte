@@ -1,15 +1,15 @@
 <script lang="ts">
   import IconButton from "../ui-components/IconButton.svelte";
   import { IconType } from "../ui-components/model/types";
-  import { toggleProperty } from "../store/settings"
+  import { toggleDialog } from "../store/dialog-state";
 
 </script>
 
 <div class="wrapper">
   <div class="header">
-    <IconButton type={IconType.Help} on:click={() => toggleProperty('helpVisible')}/>
+    <IconButton type={IconType.Help} on:click={() => toggleDialog('helpVisible')}/>
     <h1>Wordle-Cro</h1>
-    <IconButton type={IconType.Settings} on:click={() => toggleProperty('settingsVisible')}/>
+    <IconButton type={IconType.Settings} on:click={() => toggleDialog('settingsVisible')}/>
   </div>
 </div>
 
