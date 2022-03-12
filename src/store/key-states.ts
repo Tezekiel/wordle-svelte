@@ -1,13 +1,13 @@
 import { writable } from 'svelte/store'
 import { CharState } from "../components/model/types";
-import type { InputChar } from "./inputs";
+import type { InputChar } from "./types/types";
 
-export const KeyStateStore = writable<Map<string, CharState>>(
+export const keyStateStore = writable<Map<string, CharState>>(
   new Map<string, CharState>()
 )
 
 export const updateKeyState = (newChar: InputChar) => {
-  KeyStateStore.update((state) => {
+  keyStateStore.update((state) => {
     const currentKeyState = state[newChar.char] as CharState
 
     switch (currentKeyState) {

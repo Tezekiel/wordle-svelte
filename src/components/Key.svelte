@@ -1,8 +1,9 @@
 <script lang="ts">
   import { bgFromCharState } from "./utils/utils.ts";
-  import { InputChar, InputsStore, resolveUserInput } from "../store/inputs";
+  import { gameStore, resolveUserInput } from "../store/game";
+  import { InputChar} from "../store/types/types";
   import { CharState } from "./model/types";
-  import { KeyStateStore } from "../store/key-states";
+  import { keyStateStore } from "../store/key-states";
   import { Validation } from "../store/usecase/validateRow/validateRow";
   import { createEventDispatcher } from "svelte";
 
@@ -10,7 +11,7 @@
   export let isActions = false
   let element
 
-  $: keyState = $KeyStateStore
+  $: keyState = $keyStateStore
   $: background = bgFromCharState(keyState[inputChar.char])
 
   const dispatch = createEventDispatcher();

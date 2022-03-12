@@ -11,9 +11,7 @@ export const dialogs = writable<DialogState>({
 })
 
 export const toggleDialog = (property: string) => {
-  console.log(property)
   dialogs.update((currentState) => {
-  console.log(currentState)
     const obj = {...currentState}
     obj[property] = !obj[property]
     return obj

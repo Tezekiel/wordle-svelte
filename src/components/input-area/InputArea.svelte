@@ -1,14 +1,14 @@
 <script lang="ts">
-  import { InputsStore } from "../../store/inputs";
+  import { gameStore } from "../../store/game";
   import InputRow from "./InputRow.svelte"
 
   export let shakeRow = false
-  $: inputs = $InputsStore
+  $: game = $gameStore
 </script>
 
 <div class="wrapper">
   <div class="container">
-    {#each inputs.rows as row, index}
+    {#each game.rows as row, index}
       <InputRow {row} {shakeRow}/>
     {/each}
   </div>

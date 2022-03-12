@@ -1,5 +1,5 @@
 import { getWordOfDay } from "../../../usecases/getWordOfDay/getWordOfDay"
-import type { InputChar, InputRow } from "../../inputs";
+import type { InputChar, InputRow } from "../../types/types";
 import { CharState } from "../../../components/model/types";
 import { updateKeyState } from "../../key-states";
 

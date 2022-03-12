@@ -4,32 +4,13 @@ import { get } from 'svelte/store';
 import { CharState } from "../components/model/types";
 import { validateRow, updateChars } from "./usecase";
 import { Validation } from "./usecase/validateRow/validateRow";
+import { emptyGame } from "./constants/empty-game";
+import { saveOrResetGame, storedGame } from "./storage/storedGame";
+import type { Game, InputRow } from './types/types';
 
-export interface Inputs {
-  rows: InputRow[]
-}
-
-export interface InputRow {
-  current: boolean,
-  done: boolean,
-  chars: InputChar[]
-}
-
-export interface InputChar {
-  char?: string,
-  state?: CharState
-}
-
-export const InputsStore = writable<Inputs>(
-  {
-    rows: [
-      {current: true, done: false, chars: new Array(5)},
-      {current: false, done: false, chars: new Array(5)},
-      {current: false, done: false, chars: new Array(5)},
-      {current: false, done: false, chars: new Array(5)},
-      {current: false, done: false, chars: new Array(5)},
-      {current: false, done: false, chars: new Array(5)}
-    ]
+export const gameStore = writable<Game>(storedGame ?? emptyGame)
+gameStore.subscribe((game) => {
+    saveOrResetGame(game);
   }
 )
 
@@ -38,7 +19,7 @@ function onValidation(row: InputRow, rowIndex: number) {
   switch (validationResult) {
     case Validation.OK:
       const newRow = updateChars(row)
-      InputsStore.update((currentState) => {
+      gameStore.update((currentState) => {
         currentState.rows[rowIndex] = newRow
         currentState.rows[rowIndex + 1] = {current: true, done: false, chars: new Array(5)}
         return currentState
@@ -51,13 +32,13 @@ function onValidation(row: InputRow, rowIndex: number) {
 }
 
 const saveRowOrError = () => {
-  const row = get(InputsStore).rows.find((row) => row.current)
-  const rowIndex = get(InputsStore).rows.findIndex((row) => row.current)
+  const row = get(gameStore).rows.find((row) => row.current)
+  const rowIndex = get(gameStore).rows.findIndex((row) => row.current)
   return onValidation(row, rowIndex);
 }
 
 const updateLetter = (letter: string) => {
-  InputsStore.update((currentState) => {
+  gameStore.update((currentState) => {
     const freeRowIndex = currentState.rows.findIndex((row) => row.current)
     const freeLetterIndex = currentState.rows[freeRowIndex].chars.findIndex((letter) => !letter)
     currentState.rows[freeRowIndex].chars[freeLetterIndex] = {char: letter, state: CharState.NONE}
@@ -66,8 +47,8 @@ const updateLetter = (letter: string) => {
 }
 
 const deleteLetter = () => {
-  InputsStore.update((currentState) => {
-    const freeRowIndex = currentState.rows.findIndex((row) => row.current )
+  gameStore.update((currentState) => {
+    const freeRowIndex = currentState.rows.findIndex((row) => row.current)
     const lastLetterIndex = findLastIndex(
       currentState.rows[freeRowIndex].chars,
       (letter) => letter !== undefined

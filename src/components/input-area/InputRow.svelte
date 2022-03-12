@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { InputRow } from "../../store/inputs"
+  import { InputRow } from "../../store/types/types"
   import InputCharBox from "./InputCharBox.svelte"
 
   export let row: InputRow

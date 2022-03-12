@@ -1,7 +1,7 @@
 <script lang="ts">
   import { CharState } from "../model/types";
   import { bgFromCharState } from "../utils/utils";
-  import { InputChar } from "../../store/inputs";
+  import { InputChar } from "../../store/types/types";
 
   export let inputChar: InputChar | undefined
   export let index: number = 0
