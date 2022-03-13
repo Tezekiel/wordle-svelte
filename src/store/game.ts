@@ -2,17 +2,17 @@ import { writable } from 'svelte/store'
 import { findLastIndex } from "../utils/arrays";
 import { get } from 'svelte/store';
 import { CharState } from "../components/model/types";
-import { validateRow } from "./usecase";
+import { validateRow, maybeResetGame, updateCharState } from "./usecase";
 import { Validation } from "./usecase/validateRow/validateRow";
 import { emptyGame } from "./constants/empty-game";
-import { saveOrResetGame, storedGame } from "./storage/storedGame";
+import { saveGame, getStoredGame } from "./storage/storedGame";
 import type { Game, InputRow } from './types/types';
 import { updateKeyState } from "./key-states";
-import { updateCharState } from "./usecase/updateChars/updateChars";
 
-export const gameStore = writable<Game>(storedGame ?? emptyGame)
+maybeResetGame()
+export const gameStore = writable<Game>(getStoredGame() ?? emptyGame)
 gameStore.subscribe((game) => {
-    saveOrResetGame(game);
+    saveGame(game);
   }
 )
 

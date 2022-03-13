@@ -1,14 +1,16 @@
 import { writable } from 'svelte/store'
 import { CharState } from "../components/model/types";
 import type { InputChar } from "./types/types";
-import { saveOrResetKeys, storedKeyStates } from "./storage/storedKeyStates";
+import { saveKeys, getStoredKeyStates } from "./storage/storedKeyStates";
+import { maybeResetGame } from "./usecase";
 
+maybeResetGame()
 export const keyStateStore = writable<Map<string, CharState>>(
-  storedKeyStates ?? new Map<string, CharState>()
+  getStoredKeyStates() ?? new Map<string, CharState>()
 )
 
 keyStateStore.subscribe((keyStates) => {
-    saveOrResetKeys(keyStates);
+    saveKeys(keyStates);
   }
 )
 
