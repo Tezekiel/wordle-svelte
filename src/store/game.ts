@@ -8,6 +8,7 @@ import { emptyGame } from "./constants/empty-game";
 import { saveGame, getStoredGame } from "./storage/storedGame";
 import type { Game, InputRow } from './types/types';
 import { updateKeyState } from "./key-states";
+import { isWinOrLoss } from "./usecase/isWinOrLoss/isWinOrLoss";
 
 maybeResetGame()
 export const gameStore = writable<Game>(getStoredGame() ?? emptyGame)
@@ -21,10 +22,11 @@ function onValidation(row: InputRow, rowIndex: number) {
   switch (validationResult) {
     case Validation.OK:
       const newRow = updateChars(row)
-      gameStore.update((currentState) => {
-        currentState.rows[rowIndex] = newRow
-        currentState.rows[rowIndex + 1] = {current: true, done: false, chars: new Array(5)}
-        return currentState
+      gameStore.update((currentGame) => {
+        currentGame.rows[rowIndex] = newRow
+        currentGame.rows[rowIndex + 1] = {current: true, done: false, chars: new Array(5)}
+        isWinOrLoss(currentGame)
+        return currentGame
       })
       break;
     default:
