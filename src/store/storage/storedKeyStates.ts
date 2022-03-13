@@ -5,7 +5,6 @@ export const getStoredKeyStates = () => {
 }
 
 export const saveKeys = (keyStates: Map<string, CharState>) => {
-  // todo dont save non finished rows
   localStorage.setItem('keyState', JSON.stringify(keyStates))
 }
 

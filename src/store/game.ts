@@ -53,7 +53,7 @@ const deleteLetter = () => {
     const freeRowIndex = currentState.rows.findIndex((row) => row.current)
     const lastLetterIndex = findLastIndex(
       currentState.rows[freeRowIndex].chars,
-      (letter) => letter !== undefined
+      (letter) => Boolean(letter)
     )
     currentState.rows[freeRowIndex].chars[lastLetterIndex] = undefined
     return currentState
