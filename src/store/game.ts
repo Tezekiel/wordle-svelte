@@ -18,17 +18,18 @@ gameStore.subscribe((game) => {
 )
 
 function onValidation(row: InputRow, rowIndex: number) {
-  const validationResult = validateRow(row)
+  let validationResult = validateRow(row)
+
   switch (validationResult) {
     case Validation.OK:
       const newRow = updateChars(row)
       gameStore.update((currentGame) => {
         currentGame.rows[rowIndex] = newRow
         currentGame.rows[rowIndex + 1] = {current: true, done: false, chars: new Array(5)}
-        isWinOrLoss(currentGame)
+        validationResult = isWinOrLoss(currentGame)
         return currentGame
       })
-      break;
+      return validationResult;
     default:
       return validationResult
   }

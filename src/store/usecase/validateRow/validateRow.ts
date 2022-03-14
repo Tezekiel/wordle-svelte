@@ -5,7 +5,7 @@ export enum Validation {
   // row done
   OK,
   // game done
-  Done,
+  Win,
   // game lost
   Lost,
   // errors

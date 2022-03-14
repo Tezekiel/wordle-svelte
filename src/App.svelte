@@ -39,16 +39,21 @@
   }
 
   function handleWin() {
+    console.log('WIN')
+    // delay for animation
+    // block input
+    // show dialog
     showWinDialog = true
   }
 
   function handleLoss() {
+    console.log('LOST')
     showLostDialog = true
   }
 
   const handleValidation = (event) => {
     switch (event.detail.status as Validation) {
-      case Validation.Done:
+      case Validation.Win:
         handleWin();
         break;
       case Validation.Lost:

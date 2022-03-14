@@ -1,4 +1,4 @@
-const fallbackDate = new Date(2022, 2, 7)
+const fallbackDate = new Date(2022, 2, 14)
 
 export const diffInDays = (from?: Date) : number => {
   const startingDate = from ?? fallbackDate

@@ -14,7 +14,3 @@ export interface InputChar {
   char?: string,
   state?: CharState
 }
-
-export enum GameState {
-  Win, Loss, Play
-}
