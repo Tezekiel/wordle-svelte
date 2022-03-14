@@ -10,8 +10,12 @@ export const isWinOrLoss = (game: Game) => {
   if (isWin) return GameState.Win
 
   // loss condition
-  const isLoss = !game.rows[5].chars.every(value => value.state === CharState.CORRECT)
-  if (isLoss) return GameState.Loss
+  const isLastRowFull = Boolean(game.rows[5].chars[0])
+  if(isLastRowFull) {
+    const isLoss = !game.rows[5].chars.every(value => value.state === CharState.CORRECT)
+    if (isLoss) return GameState.Loss
+  }
 
+  // default
   return GameState.Play
 }

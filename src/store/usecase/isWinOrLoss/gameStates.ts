@@ -49,3 +49,13 @@ export const liveGame: Game = {
     {current: true, done: false, chars: new Array(5)}
   ]
 }
+export const liveGameEmptyRows: Game = {
+  rows: [
+    {current: true, done: true, chars: lostRow},
+    {current: false, done: false, chars: new Array(5)},
+    {current: false, done: false, chars: new Array(5)},
+    {current: false, done: false, chars: new Array(5)},
+    {current: false, done: false, chars: new Array(5)},
+    {current: false, done: false, chars: new Array(5)}
+  ]
+}
