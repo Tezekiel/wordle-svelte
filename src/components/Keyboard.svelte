@@ -6,6 +6,8 @@
   const keys = characters
   const keyActions = actions
 
+  export let inputsBlocked = false
+
   // for saving references to each Key component
   let allKeys = []
 
@@ -26,6 +28,7 @@
            isActions="true"
            bind:this={allKeys[key]}
            on:validation
+           {inputsBlocked}
       />
     {/each}
   </div>
@@ -34,6 +37,7 @@
       <Key inputChar="{{char:key.toUpperCase(), state: CharState.NONE}}"
            bind:this={allKeys[key]}
            on:validation
+           {inputsBlocked}
       />
     {/each}
   </div>

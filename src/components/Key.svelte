@@ -9,6 +9,7 @@
 
   export let inputChar: InputChar = {char: "", state: CharState.NONE}
   export let isActions = false
+  export let inputsBlocked = false
   let element
 
   $: keyState = $keyStateStore
@@ -25,6 +26,7 @@
   }
 
   const handleClick = () => {
+    if (inputsBlocked) return
     let result: Validation | undefined = resolveUserInput(inputChar.char)
     if (result) dispatch('validation', {
       status: result

@@ -1,11 +1,10 @@
-import { writable } from 'svelte/store'
+import { get, writable } from 'svelte/store'
 import { findLastIndex } from "../utils/arrays";
-import { get } from 'svelte/store';
 import { CharState } from "../components/model/types";
-import { validateRow, maybeResetGame, updateCharState } from "./usecase";
+import { maybeResetGame, updateCharState, validateRow } from "./usecase";
 import { Validation } from "./usecase/validateRow/validateRow";
 import { emptyGame } from "./constants/empty-game";
-import { saveGame, getStoredGame } from "./storage/storedGame";
+import { getStoredGame, saveGame } from "./storage/storedGame";
 import type { Game, InputRow } from './types/types';
 import { updateKeyState } from "./key-states";
 import { isWinOrLoss } from "./usecase/isWinOrLoss/isWinOrLoss";
@@ -25,7 +24,9 @@ function onValidation(row: InputRow, rowIndex: number) {
       const newRow = updateChars(row)
       gameStore.update((currentGame) => {
         currentGame.rows[rowIndex] = newRow
-        currentGame.rows[rowIndex + 1] = {current: true, done: false, chars: new Array(5)}
+        if (rowIndex < 5) {
+          currentGame.rows[rowIndex + 1] = {current: true, done: false, chars: new Array(5)}
+        }
         validationResult = isWinOrLoss(currentGame)
         return currentGame
       })

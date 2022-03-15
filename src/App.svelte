@@ -12,6 +12,7 @@
   import { Validation } from "./store/usecase/validateRow/validateRow";
   import { getWordOfDayString } from "./usecases/getWordOfDay/getWordOfDay"
   import { localization } from "./store/localization";
+  import { getBlockGame, setBlockGame } from "./store/storage/storedBlockGame";
 
   let checked = get(settings).darkMode
   let checkedLang = get(settings).isEnglish
@@ -22,6 +23,7 @@
   let showLostDialog = false
 
   $: lang = $localization
+  $: blockInputs = getBlockGame()
 
   const handleChange = () => {
     toggleProperty('darkMode')
@@ -40,14 +42,16 @@
 
   function handleWin() {
     console.log('WIN')
+    blockInputs = true
+    setBlockGame(true)
     // delay for animation
-    // block input
     // show dialog
     showWinDialog = true
   }
 
   function handleLoss() {
-    console.log('LOST')
+    blockInputs = true
+    setBlockGame(true)
     showLostDialog = true
   }
 
@@ -88,7 +92,6 @@
       title="{'Hrvatski/English'}"
       subtitle="{lang.get('lang_desc')}"/>
   </FullScreenDialog>
-
   <!-- Invalid try -->
   <Snackbar bind:visible timeout="2">
     {errorMessage}
@@ -101,7 +104,7 @@
 
   <Header/>
   <InputArea {shakeRow}/>
-  <Keyboard on:validation={handleValidation}/>
+  <Keyboard on:validation={handleValidation} inputsBlocked="{blockInputs}"/>
 </main>
 
 <style>
