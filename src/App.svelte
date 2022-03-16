@@ -20,7 +20,7 @@
   let visible = false
   let shakeRow = false
   let showWinDialog = false
-  let showLostDialog = false
+  let showLostSnack = false
 
   $: lang = $localization
   $: blockInputs = getBlockGame()
@@ -41,18 +41,18 @@
   }
 
   function handleWin() {
-    console.log('WIN')
-    blockInputs = true
-    setBlockGame(true)
-    // delay for animation
-    // show dialog
-    showWinDialog = true
+    handleEndGame()
+    setTimeout(() => showWinDialog = true, 400)
   }
 
   function handleLoss() {
+    handleEndGame();
+    setTimeout(() => showLostSnack = true, 400)
+  }
+
+  function handleEndGame() {
     blockInputs = true
     setBlockGame(true)
-    showLostDialog = true
   }
 
   const handleValidation = (event) => {
@@ -98,7 +98,7 @@
   </Snackbar>
 
   <!-- Lost -->
-  <Snackbar bind:visible={showLostDialog} timeout="0">
+  <Snackbar bind:visible={showLostSnack} timeout="0">
     {lang.get('solution')} {getWordOfDayString()}
   </Snackbar>
 

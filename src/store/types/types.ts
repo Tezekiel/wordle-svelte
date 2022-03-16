@@ -14,3 +14,21 @@ export interface InputChar {
   char?: string,
   state?: CharState
 }
+
+interface GuessDistribution {
+  one: number,
+  two: number,
+  three: number,
+  four: number,
+  five: number,
+  six: number,
+  latest: string
+}
+
+export interface GameAnalytics {
+  played: number
+  winPercent: number
+  streak: number
+  maxStreak: number
+  guessDistribution: GuessDistribution
+}
