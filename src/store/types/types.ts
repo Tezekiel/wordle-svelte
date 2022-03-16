@@ -16,17 +16,18 @@ export interface InputChar {
 }
 
 interface GuessDistribution {
-  one: number,
-  two: number,
-  three: number,
-  four: number,
-  five: number,
-  six: number,
-  latest: string
+  1: number,
+  2: number,
+  3: number,
+  4: number,
+  5: number,
+  6: number,
+  latest: number
 }
 
 export interface GameAnalytics {
   played: number
+  won: number
   winPercent: number
   streak: number
   maxStreak: number

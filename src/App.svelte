@@ -13,6 +13,7 @@
   import { getWordOfDayString } from "./usecases/getWordOfDay/getWordOfDay"
   import { localization } from "./store/localization";
   import { getBlockGame, setBlockGame } from "./store/storage/storedBlockGame";
+  import { updateAnalytics } from "./store/usecase/updateAnalytics/updateAnalytics";
 
   let checked = get(settings).darkMode
   let checkedLang = get(settings).isEnglish
@@ -41,7 +42,7 @@
   }
 
   function handleWin() {
-    handleEndGame()
+    handleEndGame(true)
     setTimeout(() => showWinDialog = true, 400)
   }
 
@@ -50,9 +51,10 @@
     setTimeout(() => showLostSnack = true, 400)
   }
 
-  function handleEndGame() {
+  function handleEndGame(isWin: boolean = false) {
     blockInputs = true
     setBlockGame(true)
+    updateAnalytics(isWin)
   }
 
   const handleValidation = (event) => {
