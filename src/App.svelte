@@ -7,7 +7,7 @@
   import SettingsItem from "./ui-components/SettingsItem.svelte"
   import { settings, toggleProperty } from "./store/settings";
   import { get } from 'svelte/store';
-  import { Snackbar } from 'svelte-mui';
+  import { Snackbar, Dialog } from 'svelte-mui';
   import { messageFromValidation } from "./mappers/message-from-validation";
   import { Validation } from "./store/usecase/validateRow/validateRow";
   import { getWordOfDayString } from "./usecases/getWordOfDay/getWordOfDay"
@@ -25,6 +25,7 @@
 
   $: lang = $localization
   $: blockInputs = getBlockGame()
+  $: showEndGameDialog = false
 
   const handleChange = () => {
     toggleProperty('darkMode')
@@ -94,6 +95,7 @@
       title="{'Hrvatski/English'}"
       subtitle="{lang.get('lang_desc')}"/>
   </FullScreenDialog>
+
   <!-- Invalid try -->
   <Snackbar bind:visible timeout="2">
     {errorMessage}
@@ -103,6 +105,11 @@
   <Snackbar bind:visible={showLostSnack} timeout="0">
     {lang.get('solution')} {getWordOfDayString()}
   </Snackbar>
+
+  <Dialog visible="{true}" width="640" --bg-panel={checked ? 'var(--dark-bg)' : 'var(--light-bg)'} >
+    <div slot="title">{lang.get('statistics-title')}</div>
+    <Statistics/>
+  </Dialog>
 
   <Header/>
   <InputArea {shakeRow}/>

@@ -2,7 +2,6 @@ import type { Game } from "../../types/types";
 import { getStoredGame } from "../../storage/storedGame";
 import type { GameAnalytics } from "../../types/types";
 import { getGameAnalytics, setGameAnalytics } from "../../storage/storedAnalytics";
-import { analytics2 } from "./mockData";
 import { findLastIndex } from "../../../utils/arrays";
 
 export const handleWin = (analytics: GameAnalytics, game: Game) => {

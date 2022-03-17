@@ -40,6 +40,7 @@ const english = new Map([
   ['error_too_short', 'Word must be 5 letters long.'],
   ['error_not_in_list', 'Word not in list.'],
   ['solution', 'Solution was:'],
+  ['statistics-title', 'Statistics'],
 ])
 const croatian = new Map([
   ['settings', 'Opcije'],
@@ -64,6 +65,7 @@ const croatian = new Map([
   ['error_too_short', 'Riječ mora imati 5 slova.'],
   ['error_not_in_list', 'Riječ nije u rječniku.'],
   ['solution', 'Rješenje je:'],
+  ['statistics-title', 'Statistika'],
 ])
 
 const languages: Languages = {
