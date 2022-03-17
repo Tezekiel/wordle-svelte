@@ -15,6 +15,8 @@
   import { getBlockGame, setBlockGame } from "./store/storage/storedBlockGame";
   import { updateAnalytics } from "./store/usecase/updateAnalytics/updateAnalytics";
   import Statistics from "./components/Statistics.svelte";
+  import Label from "./components/ui-components/Label.svelte";
+  import { getGameAnalytics } from "./store/storage/storedAnalytics";
 
   let checked = get(settings).darkMode
   let checkedLang = get(settings).isEnglish
@@ -106,9 +108,9 @@
     {lang.get('solution')} {getWordOfDayString()}
   </Snackbar>
 
-  <Dialog visible="{showWinDialog}" width="640" --bg-panel={checked ? 'var(--dark-bg)' : 'var(--light-bg)'} >
-    <div slot="title">{lang.get('statistics-title')}</div>
-    <Statistics/>
+  <Dialog visible={true} width="640" --bg-panel={checked ? 'var(--dark-bg)' : 'var(--light-bg)'} >
+    <div slot="title">{lang.get('stat-title')}</div>
+    <Statistics statistics="{getGameAnalytics()}"/>
   </Dialog>
 
   <Header/>

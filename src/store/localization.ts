@@ -40,7 +40,14 @@ const english = new Map([
   ['error_too_short', 'Word must be 5 letters long.'],
   ['error_not_in_list', 'Word not in list.'],
   ['solution', 'Solution was:'],
-  ['statistics-title', 'Statistics'],
+  ['stat-title', 'Statistics'],
+  ['stat-played', 'Played games'],
+  ['stat-win', 'Win percent'],
+  ['stat-cur-streak', 'Current Streak'],
+  ['stat-max-streak', 'Max Streak'],
+  ['stat-distribution', 'GUESS DISTRIBUTION'],
+  ['stat-next', 'NEXT WORDLE-CRO'],
+  ['stat-share', 'SHARE'],
 ])
 const croatian = new Map([
   ['settings', 'Opcije'],
@@ -65,7 +72,14 @@ const croatian = new Map([
   ['error_too_short', 'Riječ mora imati 5 slova.'],
   ['error_not_in_list', 'Riječ nije u rječniku.'],
   ['solution', 'Rješenje je:'],
-  ['statistics-title', 'Statistika'],
+  ['stat-title', 'Statistika'],
+  ['stat-played', 'Odigrano Igara'],
+  ['stat-win', 'Pobjede %'],
+  ['stat-cur-streak', 'Trenutni Niz'],
+  ['stat-max-streak', 'Maksimalni Niz'],
+  ['stat-distribution', 'DISTRIBUCIJA POKUŠAJA'],
+  ['stat-next', 'IDUĆI WORDLE-CRO'],
+  ['stat-share', 'PODIJELI'],
 ])
 
 const languages: Languages = {
