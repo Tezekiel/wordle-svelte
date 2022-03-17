@@ -3,8 +3,8 @@
   import FullScreenDialog from "./components/FullScreenDialog.svelte";
   import Keyboard from "./components/Keyboard.svelte";
   import InputArea from "./components/input-area/InputArea.svelte"
-  import Help from "./ui-components/Help.svelte"
-  import SettingsItem from "./ui-components/SettingsItem.svelte"
+  import Help from "./components/ui-components/Help.svelte"
+  import SettingsItem from "./components/ui-components/SettingsItem.svelte"
   import { settings, toggleProperty } from "./store/settings";
   import { get } from 'svelte/store';
   import { Snackbar, Dialog } from 'svelte-mui';
@@ -14,6 +14,7 @@
   import { localization } from "./store/localization";
   import { getBlockGame, setBlockGame } from "./store/storage/storedBlockGame";
   import { updateAnalytics } from "./store/usecase/updateAnalytics/updateAnalytics";
+  import Statistics from "./components/Statistics.svelte";
 
   let checked = get(settings).darkMode
   let checkedLang = get(settings).isEnglish
@@ -25,7 +26,6 @@
 
   $: lang = $localization
   $: blockInputs = getBlockGame()
-  $: showEndGameDialog = false
 
   const handleChange = () => {
     toggleProperty('darkMode')
@@ -44,12 +44,12 @@
 
   function handleWin() {
     handleEndGame(true)
-    setTimeout(() => showWinDialog = true, 400)
+    setTimeout(() => showWinDialog = true, 2200)
   }
 
   function handleLoss() {
     handleEndGame();
-    setTimeout(() => showLostSnack = true, 400)
+    setTimeout(() => showLostSnack = true, 1800)
   }
 
   function handleEndGame(isWin: boolean = false) {
@@ -106,7 +106,7 @@
     {lang.get('solution')} {getWordOfDayString()}
   </Snackbar>
 
-  <Dialog visible="{true}" width="640" --bg-panel={checked ? 'var(--dark-bg)' : 'var(--light-bg)'} >
+  <Dialog visible="{showWinDialog}" width="640" --bg-panel={checked ? 'var(--dark-bg)' : 'var(--light-bg)'} >
     <div slot="title">{lang.get('statistics-title')}</div>
     <Statistics/>
   </Dialog>

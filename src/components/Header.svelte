@@ -1,6 +1,6 @@
 <script lang="ts">
-  import IconButton from "../ui-components/IconButton.svelte";
-  import { IconType } from "../ui-components/model/types";
+  import IconButton from "./ui-components/IconButton.svelte";
+  import { IconType } from "./ui-components/model/types";
   import { toggleDialog } from "../store/dialog-state";
 
 </script>

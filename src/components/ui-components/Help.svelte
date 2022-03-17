@@ -1,7 +1,7 @@
 <script lang="ts">
-  import InputRow from "./../components/input-area/InputRow.svelte"
-  import { exampleOne, exampleTwo, exampleThree } from "../constants";
-  import { localization } from "../store/localization";
+  import InputRow from "../input-area/InputRow.svelte"
+  import { exampleOne, exampleTwo, exampleThree } from "../../constants";
+  import { localization } from "../../store/localization";
 
   $: lang = $localization
 </script>
