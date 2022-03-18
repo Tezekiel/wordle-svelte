@@ -1,11 +1,13 @@
 <script lang="ts">
   import Label from "./ui-components/Label.svelte";
-  import type { GameAnalytics, Gu, GuessDistribution } from "../store/types/types";
+  import type { GameAnalytics, GuessDistribution } from "../store/types/types";
   import { localization } from "../store/localization";
+  import { Button, Icon } from 'svelte-mui';
+  import { share } from "./constants/icons";
+  import { onMount } from "svelte";
 
   export let statistics: GameAnalytics
   $: lang = $localization
-
   $: largest = getLargest(statistics.guessDistribution)
 
   const isLatest = (guess: number) => {
@@ -13,17 +15,28 @@
   }
 
   const getLargest = (distr: GuessDistribution): number => {
-    // need to remove last as it contains which one is latest
-    return Math.max(...Object.values(distr).slice(0,6))
+    // need to remove last as it contains key of the latest guess
+    return Math.max(...Object.values(distr).slice(0, 6))
   }
 
   const widthPercent = (won: number) => {
     if (won === 0) return '10%'
-    console.log(won)
-    console.log(largest)
-    console.log(won / largest)
     return `${won / largest * 100}%`
   }
+
+  let date = new Date();
+
+  $: time = date.toLocaleTimeString();
+
+  onMount(() => {
+    const interval = setInterval(() => {
+      date = new Date();
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  });
 </script>
 
 <div>
@@ -33,7 +46,9 @@
     <Label content={statistics.streak} label={lang.get('stat-cur-streak')}/>
     <Label content={statistics.maxStreak} label={lang.get('stat-max-streak')}/>
   </div>
+
   <h1>{lang.get('stat-distribution')}</h1>
+
   <div class="graph-area">
     <div class="graph-bar-container">
       <p>1</p>
@@ -70,6 +85,19 @@
       </div>
     </div>
   </div>
+
+  <div class="share-area">
+    <div class="timer-area">
+      <h3>{lang.get('stat-next')}</h3>
+      <h2>{time}</h2>
+    </div>
+    <div class="divider"></div>
+    <Button color="{'var(--validation-green)'}" raised="true" >
+      {lang.get('stat-share')}
+      <!-- right icon -->
+      <Icon path="{share}" style="margin: 0 -4px 0 8px;"/>
+    </Button>
+  </div>
 </div>
 
 <style>
@@ -90,6 +118,11 @@
   .graph-area {
     width: 80%;
     margin: 2em 4em;
+    color: var(--on-light-secondary);
+  }
+
+  :global(body.dark-mode) .graph-area {
+    color: var(--on-dark);
   }
 
   .graph-bar-container {
@@ -112,14 +145,42 @@
 
   .graph-bar {
     width: var(--width);
-    background-color: var(--validation-grey);
     text-align: right;
     padding-right: 18px;
     height: 1.8rem;
+    background-color: var(--validation-grey);
+    color: var(--on-dark);
   }
 
   .latest {
     background-color: var(--validation-green);
+  }
+
+  .share-area {
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .divider {
+    height: 100%;
+    width: 2px;
+    background-color: var(--default-grey);
+  }
+
+  .timer-area h2, h3 {
+    text-align: center;
+  }
+
+  .timer-area h3 {
+    color: var(--on-light-secondary);
+  }
+
+  :global(body.dark-mode) .timer-area h3 {
+    color: var(--on-dark);
   }
 
 
