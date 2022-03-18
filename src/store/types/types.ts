@@ -15,7 +15,7 @@ export interface InputChar {
   state?: CharState
 }
 
-interface GuessDistribution {
+export interface GuessDistribution {
   1: number,
   2: number,
   3: number,

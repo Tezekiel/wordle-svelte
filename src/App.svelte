@@ -108,6 +108,7 @@
     {lang.get('solution')} {getWordOfDayString()}
   </Snackbar>
 
+<!-- TODO  REvert to   <Dialog visible="{showWinDialog}" -->
   <Dialog visible={true} width="640" --bg-panel={checked ? 'var(--dark-bg)' : 'var(--light-bg)'} >
     <div slot="title">{lang.get('stat-title')}</div>
     <Statistics statistics="{getGameAnalytics()}"/>
