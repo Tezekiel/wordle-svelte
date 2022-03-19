@@ -19,6 +19,8 @@
   import { createShareString } from "./usecases/createShareString";
   import { getStoredGame } from "./store/storage/storedGame";
   import { isWinOrLoss } from "./store/usecase/isWinOrLoss/isWinOrLoss";
+  import { getAnalytics, logEvent } from "firebase/analytics";
+
 
   let checked = get(settings).darkMode
   let checkedLang = get(settings).isEnglish
@@ -98,6 +100,9 @@
     isWinOrLoss(getStoredGame()),
     true
   )
+
+  const analytics = getAnalytics();
+  logEvent(analytics, 'app_started');
 </script>
 
 <svelte:head>
