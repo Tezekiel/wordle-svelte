@@ -46,13 +46,13 @@
     }
   }
 
-  function handleWin() {
-    handleEndGame(true)
+  function handleWin(wasValidated: boolean) {
+    if (!wasValidated) handleEndGame(true)
     setTimeout(() => showWinDialog = true, 2200)
   }
 
-  function handleLoss() {
-    handleEndGame();
+  function handleLoss(wasValidated: boolean) {
+    if (!wasValidated) handleEndGame();
     setTimeout(() => showLostSnack = true, 1800)
   }
 
@@ -62,13 +62,16 @@
     updateAnalytics(isWin)
   }
 
-  function onValidationResult(validation: Validation) {
+  function onValidationResult(
+    validation: Validation,
+    wasValidated: boolean = false
+  ) {
     switch (validation) {
       case Validation.Win:
-        handleWin();
+        handleWin(wasValidated);
         break;
       case Validation.Lost:
-        handleLoss()
+        handleLoss(wasValidated)
         break;
       case Validation.OK:
         break;
@@ -91,7 +94,10 @@
     visible = true
   }
 
-  onValidationResult(isWinOrLoss(getStoredGame()))
+  onValidationResult(
+    isWinOrLoss(getStoredGame()),
+    true
+  )
 </script>
 
 <svelte:head>
