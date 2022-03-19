@@ -15,7 +15,7 @@ export const getRowWon = (game: Game) => {
 
 export const renderRow = (chars: InputChar[]): string => {
   return chars.map(value => {
-    switch (value.state){
+    switch (value.state) {
       case CharState.WRONG:
         return blackEmoji;
       case CharState.EXIST:
@@ -28,9 +28,10 @@ export const renderRow = (chars: InputChar[]): string => {
 }
 
 export const createShareString = (game: Game = getStoredGame()): string => {
+  const rows = game.rows
+    .filter(row => !!row.chars[0])
+    .map(value => renderRow(value.chars) + '\n')
+    .join('')
 
-  return `Wordle-Cro ${getGameCount()} ${getRowWon(game)}/6\n' +
-    '\n' +
-    '🟩⬛🟨🟩🟩\n' +
-    '🟩🟩🟩🟩🟩`
+  return `Wordle-Cro ${getGameCount()} ${getRowWon(game)}/6\n\n${rows}`
 }

@@ -2,8 +2,7 @@ import { Validation } from "../store/usecase/validateRow/validateRow";
 import { get } from 'svelte/store';
 import { localization } from "../store/localization";
 
-export const messageFromValidation = (event) => {
-  const validation: Validation = event.detail.status
+export const messageFromValidation = (validation: Validation) => {
   const lang = get(localization)
   switch (validation) {
     case Validation.AlreadyDone:

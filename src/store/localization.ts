@@ -48,6 +48,7 @@ const english = new Map([
   ['stat-distribution', 'GUESS DISTRIBUTION'],
   ['stat-next', 'NEXT WORDLE-CRO'],
   ['stat-share', 'SHARE'],
+  ['clipboard_msg', 'Copied to clipboard'],
 ])
 const croatian = new Map([
   ['settings', 'Opcije'],
@@ -80,6 +81,7 @@ const croatian = new Map([
   ['stat-distribution', 'DISTRIBUCIJA POKUŠAJA'],
   ['stat-next', 'IDUĆI WORDLE-CRO'],
   ['stat-share', 'PODIJELI'],
+  ['clipboard_msg', 'Kopirano u međuspremnik'],
 ])
 
 const languages: Languages = {

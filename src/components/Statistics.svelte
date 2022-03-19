@@ -94,7 +94,7 @@
       <h2>{time}</h2>
     </div>
     <div class="divider"></div>
-    <Button color="{'var(--validation-green)'}" raised="true">
+    <Button color="{'var(--validation-green)'}" raised="true" on:click>
       {lang.get('stat-share')}
       <!-- right icon -->
       <Icon path="{share}" style="margin: 0 -4px 0 8px;"/>

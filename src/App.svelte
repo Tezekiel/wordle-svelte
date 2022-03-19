@@ -15,8 +15,10 @@
   import { getBlockGame, setBlockGame } from "./store/storage/storedBlockGame";
   import { updateAnalytics } from "./store/usecase/updateAnalytics/updateAnalytics";
   import Statistics from "./components/Statistics.svelte";
-  import Label from "./components/ui-components/Label.svelte";
   import { getGameAnalytics } from "./store/storage/storedAnalytics";
+  import { createShareString } from "./usecases/createShareString";
+  import { getStoredGame } from "./store/storage/storedGame";
+  import { isWinOrLoss } from "./store/usecase/isWinOrLoss/isWinOrLoss";
 
   let checked = get(settings).darkMode
   let checkedLang = get(settings).isEnglish
@@ -33,9 +35,9 @@
     toggleProperty('darkMode')
   }
 
-  function handleErrors(event) {
+  function handleErrors(validation: Validation) {
     shakeRow = false
-    errorMessage = messageFromValidation(event);
+    errorMessage = messageFromValidation(validation);
     if (errorMessage) {
       visible = true
       shakeRow = true
@@ -60,22 +62,36 @@
     updateAnalytics(isWin)
   }
 
-  const handleValidation = (event) => {
-    switch (event.detail.status as Validation) {
+  function onValidationResult(validation: Validation) {
+    switch (validation) {
       case Validation.Win:
         handleWin();
         break;
       case Validation.Lost:
         handleLoss()
         break;
+      case Validation.OK:
+        break;
       default:
-        handleErrors(event)
+        handleErrors(validation)
     }
+  }
+
+  const handleValidation = (event) => {
+    onValidationResult(event.detail.status as Validation);
   }
 
   const handleChangeLang = () => {
     toggleProperty('isEnglish')
   }
+
+  const handleShare = () => {
+    navigator.clipboard.writeText(createShareString(getStoredGame()))
+    errorMessage = lang.get('clipboard_msg')
+    visible = true
+  }
+
+  onValidationResult(isWinOrLoss(getStoredGame()))
 </script>
 
 <svelte:head>
@@ -108,10 +124,9 @@
     {lang.get('solution')} {getWordOfDayString()}
   </Snackbar>
 
-  <!-- TODO  REvert to   <Dialog visible="{showWinDialog}" -->
-  <Dialog visible={true} width="640" --bg-panel={checked ? 'var(--dark-bg)' : 'var(--light-bg)'}>
+  <Dialog visible={showWinDialog} width="640" --bg-panel={checked ? 'var(--dark-bg)' : 'var(--light-bg)'}>
     <div slot="title">{lang.get('stat-title')}</div>
-    <Statistics statistics="{getGameAnalytics()}"/>
+    <Statistics statistics="{getGameAnalytics()}" on:click={() => handleShare()}/>
   </Dialog>
 
   <Header/>
