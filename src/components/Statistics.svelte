@@ -24,15 +24,17 @@
     return `${won / largest * 100}%`
   }
 
-  let date = new Date();
-
-  $: time = date.toLocaleTimeString();
-
+  // timer related
+  let date = new Date().getTime()
+  const midnight = new Date()
+  midnight.setHours(23)
+  midnight.setMinutes(0)
+  midnight.setSeconds(0)
+  $: time = new Date(midnight - date).toLocaleTimeString()
   onMount(() => {
     const interval = setInterval(() => {
-      date = new Date();
+      date = new Date().getTime();
     }, 1000);
-
     return () => {
       clearInterval(interval);
     };
@@ -92,7 +94,7 @@
       <h2>{time}</h2>
     </div>
     <div class="divider"></div>
-    <Button color="{'var(--validation-green)'}" raised="true" >
+    <Button color="{'var(--validation-green)'}" raised="true">
       {lang.get('stat-share')}
       <!-- right icon -->
       <Icon path="{share}" style="margin: 0 -4px 0 8px;"/>
