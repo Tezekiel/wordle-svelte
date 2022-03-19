@@ -4,6 +4,9 @@ import { CharState } from "../../../components/model/types";
 import { Validation } from "../validateRow/validateRow";
 
 export const isWinOrLoss = (game: Game) => {
+  // empty game
+  if (!game.rows[0]?.chars[0]) return Validation.OK
+
   // win condition
   const latestRow = game.rows[findLastIndex(game.rows, (value => value.done))]
   const isWin = latestRow.chars.every(value => value.state === CharState.CORRECT)
@@ -11,7 +14,7 @@ export const isWinOrLoss = (game: Game) => {
 
   // loss condition
   const isLastRowFull = Boolean(game.rows[5].chars[0])
-  if(isLastRowFull) {
+  if (isLastRowFull) {
     const isLoss = !game.rows[5].chars.every(value => value.state === CharState.CORRECT)
     if (isLoss) return Validation.Lost
   }

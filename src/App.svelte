@@ -19,6 +19,7 @@
   import { createShareString } from "./usecases/createShareString";
   import { getStoredGame } from "./store/storage/storedGame";
   import { isWinOrLoss } from "./store/usecase/isWinOrLoss/isWinOrLoss";
+  import { initializeApp } from "firebase/app";
   import { getAnalytics, logEvent } from "firebase/analytics";
 
 
@@ -101,8 +102,20 @@
     true
   )
 
-  const analytics = getAnalytics();
-  logEvent(analytics, 'app_started');
+  const firebaseConfig = {
+    apiKey: "AIzaSyBNZp0lIpnTPa3Ng6yquI1cHQlnCzspEeM",
+    authDomain: "wordle-cro.firebaseapp.com",
+    projectId: "wordle-cro",
+    storageBucket: "wordle-cro.appspot.com",
+    messagingSenderId: "479870336957",
+    appId: "1:479870336957:web:bcde5fbb4f47fe3f2a5cd4",
+    measurementId: "G-BNRCX2X339"
+  }
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig)
+  const analytics = getAnalytics(app)
+  logEvent(analytics, 'app_started')
 </script>
 
 <svelte:head>
