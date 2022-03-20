@@ -48,6 +48,12 @@ body.dark-mode {
   margin: 0 auto;
 }
 
+@media only screen and (max-width: 500px) {
+  .app-container {
+    max-width: 100%;
+  }
+}
+
 .game-container {
   max-width: 500px;
   margin: 0 auto;

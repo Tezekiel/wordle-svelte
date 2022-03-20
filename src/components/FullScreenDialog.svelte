@@ -29,6 +29,12 @@
     height: 100vh;
   }
 
+  @media only screen and (max-width: 500px) {
+    .main {
+      height: 130vh;
+    }
+  }
+
   :global(body.dark-mode) .main {
     background-color: var(--dark-bg);
   }
@@ -40,5 +46,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  @media only screen and (max-width: 500px) {
+    .title {
+      max-width: 100%;
+    }
   }
 </style>

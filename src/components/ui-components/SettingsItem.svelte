@@ -7,7 +7,7 @@
 </script>
 
 <div class="wrapper">
-  <div>
+  <div class="text-wrapper">
     <p class="title">{title}</p>
     <p class="subtitle">{subtitle}</p>
   </div>
@@ -21,6 +21,14 @@
     align-items: center;
     border-bottom: 2px solid var(--default-grey);
     padding: 12px 0 ;
+  }
+  @media only screen and (max-width: 500px) {
+    .wrapper {
+      max-width: 85%;
+    }
+    .text-wrapper {
+      max-width: 70%;
+    }
   }
   .title {
     font-size: 20px;
