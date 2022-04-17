@@ -4,6 +4,7 @@ export const potentialWords = [
   'dabar', 'klada', 'krava', 'ptica', 'psina', 'vatra', 'glava', 'suton', 'odbor', 'torta',
   'drven', 'oklop', 'moral', 'šlapa', 'ništa', 'šegrt', 'šverc', 'čavao', 'četka', 'mijeh',
   'panda', 'spora', 'mikro', 'mikro', 'šugav', 'kičma', 'barij', 'vepar', 'djeca', 'skuta',
+  'plavi','balet', 'pokop', 'vitak', 'slava','masno','maska','hotel'
 ]
 
 const getWordOfDay = (index: number = diffInDays()) => {
